@@ -10,10 +10,22 @@ class UsersController < ApplicationController
       }
     end
   end
+
   def index_comedians
-    @comedians
+    @comedians = User.comedian
   end
 
   def show
+    set_user
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def users_params
+    params.require(:user).permit(:xxx, :yyy)
   end
 end
