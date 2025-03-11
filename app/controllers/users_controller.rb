@@ -1,39 +1,22 @@
 class UsersController < ApplicationController
-  def index
-    @user = User.all
+  def index_venues
+    @venues = User.venue
+
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @venues.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
+  end
+
+  def index_comedians
+    @comedians = User.comedian
   end
 
   def show
     set_user
-  end
-
-  def new
-    @user = user.new
-  end
-
-  def create
-    @user = user.new(user_params)
-    if @user.save
-      redirect_to user_path(@user)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def edit
-    set_user
-  end
-
-  def update
-    if @user.update(users_params)
-      redirect_to users_path(@user)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def delete
-    @user.destroy
   end
 
   private
