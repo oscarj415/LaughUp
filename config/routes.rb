@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :events do
-    resources :interests, only:[:create]
+    resources :interests, only: [:create]
     resources :reviews
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
