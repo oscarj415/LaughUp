@@ -3,4 +3,8 @@ class InterestsController < ApplicationController
     @event = Event.find(params[:event_id])
     @interest = Interest.create(user: current_user, event: @event)
   end
+
+  def delete
+  end
+
 end
