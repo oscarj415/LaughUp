@@ -8,6 +8,7 @@ class User < ApplicationRecord
     comedian: 1,
     venue: 2
   }
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   # All users
@@ -19,6 +20,6 @@ class User < ApplicationRecord
 
   # Venue
   validates :address, presence: true, if: :venue?
-  validates :longitude, presence: true, if: :venue?
-  validates :latitude, presence: true, if: :venue?
+  # validates :longitude, presence: true, if: :venue?
+  # validates :latitude, presence: true, if: :venue?
 end

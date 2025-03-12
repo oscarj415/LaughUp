@@ -3,10 +3,10 @@ class UsersController < ApplicationController
     @venues = User.venue
 
     # The `geocoded` scope filters only flats with coordinates
-    @markers = @venues.geocoded.map do |user|
+    @markers = @venues.geocoded.map do |venue|
       {
-        lat: user.latitude,
-        lng: user.longitude
+        lat: venue.latitude,
+        lng: venue.longitude
       }
     end
   end
