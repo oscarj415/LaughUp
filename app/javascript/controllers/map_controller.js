@@ -1,12 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array
   }
   connect() {
+    console.log("connected");
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -34,20 +35,3 @@ export default class extends Controller {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

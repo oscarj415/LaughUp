@@ -8,6 +8,15 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+
+    <%= f.input :user_name,
+                required: true %>
+
+    <%= f.input :user_type,
+                collection: User.user_types.keys.map { |w| [w.titleize, w] },
+                prompt: "Select User Type",
+                required: true %>
+
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

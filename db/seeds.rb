@@ -1,5 +1,7 @@
 puts "Seeding data..."
 
+Event.destroy_all
+User.destroy_all
 # -------------------
 # Fans
 # -------------------
