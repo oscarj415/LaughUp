@@ -12,3 +12,115 @@
 @import "pages/index";
 
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
+$purple: #7C00FE;
+$yellow: #F9E400;
+$black: #333;
+$green: #1ABC9C;
+
+@font-face {
+  font-family: 'BM-HANNA';
+  src: font-url('BM-HANNA.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  letter-spacing: 10%;
+  background-color: $yellow;
+}
+
+.filter-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: $purple;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.map-btn {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  height: 80px;
+  width: 250px;
+  background-color: $yellow;
+  outline: 4px solid $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $black;
+  font-size: 2rem;
+  border-radius: 30px;
+}
+
+.filter-container {
+  display: none;
+  background-color: $purple;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  font-family: 'BM-HANNA', sans-serif;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: $yellow;
+  font-family: 'BM-HANNA', sans-serif;
+}
+
+/* Stile für jedes Filterfeld */
+.filter-field {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 4px solid $yellow;
+  background: none;
+  border-radius: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  background: none;
+  color: white;
+  border: 4px solid $yellow;
+  border-radius: 100%;
+  font-size: 14px;
+  width: auto;
+}
