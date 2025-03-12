@@ -1,17 +1,8 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-
 puts "Seeding data..."
 
+# -------------------
 # Fans
+# -------------------
 5.times do |i|
   User.find_or_create_by!(email: "fan#{i + 1}@example.com") do |user|
     user.user_type = :fan
@@ -21,7 +12,9 @@ puts "Seeding data..."
 end
 puts "Created 5 fan users."
 
+# -------------------
 # Comedians
+# -------------------
 5.times do |i|
   User.find_or_create_by!(email: "comedian#{i + 1}@example.com") do |user|
     user.user_type = :comedian
@@ -33,21 +26,41 @@ puts "Created 5 fan users."
 end
 puts "Created 5 comedian users."
 
+# -------------------
 # Venues
-5.times do |i|
+# -------------------
+venue_data = [
+  { name: "Tiergarten", address: "Straße des 17. Juni, Berlin, Germany" },
+  { name: "Tempelhofer Feld", address: "Tempelhofer Damm, Berlin, Germany" },
+  { name: "Volkspark Friedrichshain", address: "Friedrichshain, Berlin, Germany" },
+  { name: "Mauerpark", address: "Bernauer Str., Berlin, Germany" },
+  { name: "Treptower Park", address: "Alt-Treptow, Berlin, Germany" },
+  { name: "Grunewald", address: "Grunewald, Berlin, Germany" },
+  { name: "Görlitzer Park", address: "Görlitzer Str., Berlin, Germany" },
+  { name: "Volkspark Humboldthain", address: "Brunnenstraße, Berlin, Germany" },
+  { name: "Schlosspark Charlottenburg", address: "Spandauer Damm, Berlin, Germany" },
+  { name: "Viktoriapark", address: "Kreuzberg, Berlin, Germany" },
+  { name: "Britzer Garten", address: "Buckower Damm, Berlin, Germany" },
+  { name: "Schillerpark", address: "Wedding, Berlin, Germany" },
+  { name: "Rudolph-Wilde-Park", address: "Schöneberg, Berlin, Germany" },
+  { name: "Plänterwald", address: "Plänterwald, Berlin, Germany" },
+  { name: "Natur-Park Südgelände", address: "Priesterweg, Berlin, Germany" }
+]
+
+venue_data.each_with_index do |data, i|
   User.find_or_create_by!(email: "venue#{i + 1}@example.com") do |user|
     user.user_type = :venue
-    user.user_name = "Venue User #{i + 1}"
-    user.address = "Venue Street #{i + 1}"
-    user.latitude = rand(52.0..53.0)
-    user.longitude = rand(13.0..14.0)
+    user.user_name = data[:name]
+    user.address = data[:address]
     user.password = "password"
-    user.description = "This is a description for venue #{i + 1}" # ★ここが重要
+    user.description = "This is a description for venue #{i + 1}"
   end
 end
-puts "Created 5 venue users."
+puts "Created #{venue_data.size} venue users."
 
+# -------------------
 # Events
+# -------------------
 comedian_ids = User.where(user_type: :comedian).pluck(:id)
 venue_ids = User.where(user_type: :venue).pluck(:id)
 
