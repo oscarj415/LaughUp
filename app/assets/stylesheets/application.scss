@@ -11,4 +11,142 @@
 @import "components/index";
 @import "pages/index";
 
+
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'BM-HANNA', sans-serif;
+  font-size: 16px;
+  letter-spacing: 10%;
+  background-color: $yellow;
+  font-family: 'BM-HANNA';
+  overflow-x: hidden;
+}
+
+.filter-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: $purple;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  z-index: 1;
+  cursor: pointer;
+
+}
+
+.map-btn {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  height: 80px;
+  width: 250px;
+  background-color: $yellow;
+  outline: 4px solid $purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $purple;
+  font-size: 2rem;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column; /* Stellt sicher, dass h2 und form untereinander sind */
+  align-items: center; /* Zentriert horizontal */
+  justify-content: center; /* Zentriert vertikal */
+  background-color: $purple;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  z-index: 1000;
+  padding: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: $yellow;
+  font-family: 'BM-HANNA', sans-serif;
+}
+
+/* Stile für jedes Filterfeld */
+.filter-field {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-field input::placeholder {
+  color: lightgrey;
+}
+
+input {
+  width: 230px;
+  padding: 17px 10px;
+  border: 4px solid $yellow;
+  background: none;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  margin-right: 10px;
+  text-align: center;
+  color: $yellow;
+}
+
+button {
+  padding: 17px 10px;
+  width: 70px;
+  background: none;
+  border: 4px solid $yellow;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  color: $yellow;
+  transition: 250ms ease-out;
+
+  &:hover {
+    color: $purple;
+    background: $yellow;
+  }
+}
+
+.close-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1rem;
+  font-size: 10rem;
+  cursor: pointer;
+  color: $yellow;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $yellow;
+  font-size: 3rem;
+  outline: 0px solid red;
+}
