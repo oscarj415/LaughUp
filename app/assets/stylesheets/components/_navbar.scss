@@ -54,7 +54,7 @@
   border: none;
   padding: 0;
   padding-right: 1rem;
-  
+
 }
 
 
@@ -73,12 +73,18 @@
 
 .close-menu {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.5rem;
+  right: 1rem;
   background: none;
   border: none;
   font-size: 3rem;
   color: $yellow;
   cursor: pointer;
   z-index: 1050;
+}
+
+.close-menu:hover {
+  background: none;
+  border: none;
+  color: $yellow;
 }

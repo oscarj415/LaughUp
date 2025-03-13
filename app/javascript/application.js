@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       x: "100%",  // Bewegt den Container wieder nach rechts
     });
   });
-
-
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const navbarToggler = document.querySelector(".navbar-toggler");
@@ -63,5 +62,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
 });
