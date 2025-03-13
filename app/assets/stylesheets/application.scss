@@ -11,19 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
+
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
-$purple: #7C00FE;
-$yellow: #F9E400;
-$black: #333;
-$green: #1ABC9C;
-
-@font-face {
-  font-family: 'BM-HANNA';
-  src: url(asset-path('BM-HANNA.ttf')) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 * {
   margin: 0;
@@ -37,6 +27,7 @@ html, body {
   font-size: 16px;
   letter-spacing: 10%;
   background-color: $yellow;
+  font-family: 'BM-HANNA';
 }
 
 .filter-btn {
@@ -52,6 +43,7 @@ html, body {
   align-items: center;
   color: white;
   font-size: 2rem;
+  z-index: 1;
 }
 
 .map-btn {
@@ -68,6 +60,7 @@ html, body {
   color: $black;
   font-size: 2rem;
   border-radius: 30px;
+  z-index: 1;
 }
 
 .filter-container {
