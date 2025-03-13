@@ -23,6 +23,11 @@ class EventsController < ApplicationController
     end
   end
 
+  # def venue_index
+  #   redirect_to home_path unless current_user.comedian?
+  # end
+
+
   def edit
     set_event
   end
