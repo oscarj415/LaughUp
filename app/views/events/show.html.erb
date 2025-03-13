@@ -7,4 +7,15 @@
 
 <strong><%= link_to "venue", user_path(@user), class: "text-decoration-none", style: "color: black;" %></strong>
 
-
+<div class="review">
+  <%= f.input :user_type,
+    collection: User.user_types.keys.reject { |w| w == "fan" }.map { |w| [w.titleize, w] },
+    prompt: "Select User Type",
+    required: true,
+    input_html: {
+    data: {
+      action: "change->user-type#changeFields",
+      user_type_target: "userType"
+    }
+  } %>
+</div>
