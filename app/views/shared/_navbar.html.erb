@@ -1,23 +1,24 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand logo" do %>
       <%= image_tag asset_path("logo.png"), alt: "LaughUp Logo", width: "80px" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button"
+    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false"
+    aria-label="Toggle navigation">
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <button class="close-menu">&times;</button>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", "/", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Log In", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "About Us", "#", class: "nav-link"  %>
