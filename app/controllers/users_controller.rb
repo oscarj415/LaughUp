@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index_comedians, :index_venues, :show]
+
   def index_venues
     @venues = User.venue
 

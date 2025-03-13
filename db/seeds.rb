@@ -66,7 +66,7 @@ puts "Created #{venue_data.size} venue users."
 comedian_ids = User.where(user_type: :comedian).pluck(:id)
 venue_ids = User.where(user_type: :venue).pluck(:id)
 
-5.times do |i|
+20.times do |i|
   Event.create!(
     comedian_id: comedian_ids.sample,
     venue_id: venue_ids.sample,

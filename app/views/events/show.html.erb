@@ -12,7 +12,7 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<div class="review">
+<%# <div class="review">
   <%= f.input :user_type,
     collection: User.user_types.keys.reject { |w| w == "fan" }.map { |w| [w.titleize, w] },
     prompt: "Select User Type",
@@ -23,4 +23,4 @@
       user_type_target: "userType"
     }
   } %>
-</div>
+<%# </div> %> 
