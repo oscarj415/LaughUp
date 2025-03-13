@@ -1,22 +1,29 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background:  #F9E400;
+  background:  $yellow;
   padding: 0;
+  z-index: 10;
 }
 
 .container-fluid{
   padding:0px;
 }
 
+.laugh{
+  color: $purple;
+  font-size: 50px;
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
 .navbar-lewagon .navbar-collapse {
-  font-family: 'BM-HANNA';
   position: fixed;
   flex-grow: 0;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #7C00FE;
+  background-color: $purple;
   display: flex;
   justify-content: center;
   transform: translateY(-100%); // is hidden above the screen, moves on Y
@@ -29,11 +36,10 @@
 
 .navbar-nav{
   padding-left: 20px;
-
 }
 
 .nav-link{
-  color: #F9E400;
+  color: $yellow;
   background: none;
   font-size: 2rem;
   margin: 10px 0;
@@ -42,11 +48,15 @@
 .navbar-toggler{
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
   cursor: pointer;
   background: none;
   border: none;
+  padding: 0;
+  padding-right: 1rem;
+  
 }
+
 
 .navbar-toggler:focus {
   outline: none;
@@ -55,9 +65,9 @@
 }
 
 .bar {
-  width: 30px;
-  height: 4px;
-  background-color:#7C00FE;
+  width: 35px;
+  height: 6px;
+  background-color:$purple;
   border-radius: 2px;
 }
 
@@ -68,7 +78,7 @@
   background: none;
   border: none;
   font-size: 3rem;
-  color: #F9E400;
+  color: $yellow;
   cursor: pointer;
   z-index: 1050;
 }
