@@ -20,7 +20,7 @@ $green: #1ABC9C;
 
 @font-face {
   font-family: 'BM-HANNA';
-  src: font-url('BM-HANNA.ttf') format('truetype');
+  src: url(asset-path('BM-HANNA.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }

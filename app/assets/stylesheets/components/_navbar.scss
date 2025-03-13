@@ -9,13 +9,34 @@
 }
 
 .navbar-lewagon .navbar-collapse {
+  font-family: 'BM-HANNA';
+  position: fixed;
   flex-grow: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #7C00FE;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-100%); // is hidden above the screen, moves on Y
+  transition: 0.5s ease-in-out;
+}
+
+.navbar-lewagon .navbar-collapse.show {
+  transform: translateY(0); // moved down when its active
+}
+
+.navbar-nav{
+  padding-left: 20px;
+
 }
 
 .nav-link{
   color: #F9E400;
-  background: #7C00FE;
-  height: auto;
+  background: none;
+  font-size: 2rem;
+  margin: 10px 0;
 }
 
 .navbar-toggler{
@@ -38,4 +59,16 @@
   height: 4px;
   background-color:#7C00FE;
   border-radius: 2px;
+}
+
+.close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #F9E400;
+  cursor: pointer;
+  z-index: 1050;
 }
