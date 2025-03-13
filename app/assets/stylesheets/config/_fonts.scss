@@ -14,3 +14,10 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+@font-face {
+  font-family: 'BM-HANNA';
+  src: url(asset-path('BM-HANNA.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

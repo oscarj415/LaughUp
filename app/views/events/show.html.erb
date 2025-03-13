@@ -3,8 +3,24 @@
 
 <strong><%= link_to "events", events_path, class: "text-decoration-none", style: "color: black;" %></strong>
 
-<strong><%= link_to "comedian", user_path(@user), class: "text-decoration-none", style: "color: black;" %></strong>
+<strong><%= link_to "comedian", user_path(@comedian, previous_event_id: @event.id), class: "text-decoration-none", style: "color: black;" %></strong>
 
-<strong><%= link_to "venue", user_path(@user), class: "text-decoration-none", style: "color: black;" %></strong>
+<strong><%= link_to "venue", user_path(@venue, previous_event_id: @event.id), class: "text-decoration-none", style: "color: black;" %></strong>
 
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<div class="review">
+  <%= f.input :user_type,
+    collection: User.user_types.keys.reject { |w| w == "fan" }.map { |w| [w.titleize, w] },
+    prompt: "Select User Type",
+    required: true,
+    input_html: {
+    data: {
+      action: "change->user-type#changeFields",
+      user_type_target: "userType"
+    }
+  } %>
+</div>

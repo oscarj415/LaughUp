@@ -37,24 +37,23 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "bounce.out",
     });
   });
+});
 
-  // Navbar Toggler und Close-Button
+document.addEventListener("DOMContentLoaded", function () {
   const navbarToggler = document.querySelector(".navbar-toggler");
   const navbarCollapse = document.querySelector("#navbarSupportedContent");
   const closeButton = document.querySelector(".close-menu");
 
   if (navbarToggler && navbarCollapse && closeButton) {
-    // Toggler öffnet das Menü
     navbarToggler.addEventListener("click", function () {
       navbarCollapse.classList.add("show");
     });
 
-    // Schließt das Menü über den Close-Button
     closeButton.addEventListener("click", function () {
       navbarCollapse.classList.remove("show");
     });
 
-    // Schließt das Menü, wenn man außerhalb des Menüs klickt
+    // Close navbar when clicking outside of it
     document.addEventListener("click", function (event) {
       let clickedElement = event.target;
       if (navbarCollapse.contains(clickedElement) === false && navbarToggler.contains(clickedElement) === false) {

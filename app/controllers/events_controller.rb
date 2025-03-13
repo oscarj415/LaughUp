@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
   def show
     set_event
-    @user = User.find(params[:id])
+    @comedian = @event.comedian
+    @venue = @event.venue
   end
 
   def new

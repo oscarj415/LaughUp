@@ -17,7 +17,9 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    @event = Event.find(params[:id])
+    # @events = @user.events_as_comedian
+    # @events = @user.events_as_venue
+    @previous_event = Event.find(params[:previous_event_id])
   end
 
   private

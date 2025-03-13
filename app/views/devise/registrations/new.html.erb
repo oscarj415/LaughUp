@@ -1,30 +1,47 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { controller: "user-type" } }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
 
-  <%= f.input :user_type,
-                collection: User.user_types.keys.map { |w| [w.titleize, w] },
-                prompt: "Select User Type",
-                required: true %>
+    <div class="select-user-type">
+      <%= f.input :user_type,
+          collection: User.user_types.keys.map { |w| [w.titleize, w] },
+          prompt: "Select User Type",
+          required: true,
+          input_html: {
+            data: {
+              action: "change->user-type#changeFields",
+              user_type_target: "userType"
+            }
+          } %>
+    </div>
 
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
+    <div class="all-user">
+      <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+      <%= f.input :user_name, required: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+    </div>
 
-    <%= f.input :user_name,
-                required: true %>
+    <div class="comedian-user d-none" data-user-type-target="comedian">
+      <h4>Comedian Info</h4>
+      <%= f.input :description, label: "Bio / Description", required: true %>
+      <%= f.input :insta_handle, label: "Instagram" %>
+      <%= f.input :tiktok_handle, label: "TikTok" %>
+      <%= f.input :facebook_handle, label: "Facebook" %>
+      <%= f.input :X_handle, label: "X (Twitter)" %>
+      <%= f.input :youtube_handle, label: "YouTube" %>
+    </div>
 
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    <div class="venue-user d-none" data-user-type-target="venue">
+      <h4>Venue Info</h4>
+      <%= f.input :description, label: "Venue Description", required: true %>
+      <%= f.input :address, label: "Venue Address", required: true %>
+      <%= f.input :youtube_handle, label: "Socials (ex. Social media, Home page link)" %>
+    </div>
+
   </div>
 
   <div class="form-actions">
