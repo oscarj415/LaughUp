@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @events = Event.all
   end
@@ -21,6 +22,11 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  # def venue_index
+  #   redirect_to home_path unless current_user.comedian?
+  # end
+
 
   def edit
     set_event
