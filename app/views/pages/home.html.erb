@@ -1,6 +1,6 @@
 <div class="gallery">
 <br>
-<div class="head-text">
+  <div class="head-text">
 <h4>Upcoming Shows:</h4>
 </div>
 
@@ -23,31 +23,10 @@
   MO, 11.03<br>19.00 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
   </div>
   </div>
-
-  <div class="items">
-  <div class=comedian-img>
-    <%= image_tag "atze.png", alt: "Comedian Justin" %>
-  </div>
-  <div class=info-text>
-  Atze Schroeder<br><br>
-  MO, 12.03<br>19.30 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
-  </div>
-  </div>
-
-  <div class="items">
-  <div class=comedian-img>
-    <%= image_tag "kevin_hart.png", alt: "Comedian Justin" %>
-  </div>
-  <div class=info-text>
-  Kevin Hart<br><br>
-  MO, 13.03<br>20.30 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
-  </div>
-  </div>
+<strong><%= link_to "check out more events ➶", events_path, class: "link", style: "color: black;" %></strong>
 
 </div>
 
-
-<strong><%= link_to "events", events_path, class: "text-decoration-none", style: "color: black;" %></strong>
 
 <div class="filter-container">
         <div class="close-btn">X</div>

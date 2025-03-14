@@ -1,6 +1,7 @@
+
 .social-links{
   gap: 50px;
-  margin-top: 40px;
+  margin-top: 10px;
   font-size: 30px;
 
   i{
@@ -17,5 +18,17 @@
       text-decoration: none;
       color: #000;
       }
+
+}
+
+.footer-line{
+  border-top: 1px solid $purple;
+  margin-top: 30px;
+  font-family: Nunito;
+
+  p{
+    margin-top: 10px;
+    text-align: center;
+  }
 
 }
