@@ -150,6 +150,23 @@ button {
   outline: 0px solid red;
 }
 
+.close-btn2 {
+  position: fixed;
+  top: 1.5rem;
+  right: 1rem;
+  font-size: 10rem;
+  cursor: pointer;
+  color: $yellow;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $yellow;
+  font-size: 3rem;
+  outline: 0px solid red;
+}
+
 .gallery {
   position: relative;
   margin: 10px;
@@ -203,11 +220,21 @@ h4{
   font-size: 32px;
   font-weight: 400;
   line-height: 100%;
+  letter-spacing: 10%;
+  text-decoration: none;
+  outline: 1px solid $purple;
+  padding: 1rem;
+  border-radius: 20px;
+  color: $purple;
+  transition: 250ms ease-out;
+
+  &:hover {
+    background-color: $purple;
+    color: $yellow;
+
+  }
 }
 
-.link:hover{
-  font-style: italic;
-}
 
 .back-btn-container{
   text-align: center;
@@ -239,4 +266,13 @@ color: #FFFFFF;
     width: 500px;
     min-height: 250px;
   }
+}
+
+video {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  object-fit: cover;
 }

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const navbarToggler = document.querySelector(".navbar-toggler");
   const navbarCollapse = document.querySelector("#navbarSupportedContent");
-  const closeButton = document.querySelector(".close-menu");
+  const closeButton = document.querySelector(".close-btn2");
 
   if (navbarToggler && navbarCollapse && closeButton) {
     navbarToggler.addEventListener("click", function () {
