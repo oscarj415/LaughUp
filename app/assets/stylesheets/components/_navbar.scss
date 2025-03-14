@@ -38,11 +38,26 @@
   padding-left: 20px;
 }
 
+.nav-item {
+  display: inline;
+}
+
 .nav-link{
   color: $yellow;
   background: none;
   font-size: 2rem;
   margin: 10px 0;
+  display: inline-block;
+}
+
+.nav-link + .nav-link::before {
+  content: " / ";
+  margin: 0 10px;
+}
+
+.sign-up {
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .navbar-toggler{
@@ -87,4 +102,8 @@
   background: none;
   border: none;
   color: $yellow;
+}
+
+.line{
+  border-bottom: 1px solid $purple;
 }
