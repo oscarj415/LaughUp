@@ -64,6 +64,7 @@ html, body {
   font-size: 2rem;
   border-radius: 40px;
   z-index: 5;
+  cursor: pointer;
 }
 
 .filter-container {
@@ -84,6 +85,27 @@ html, body {
   pointer-events: none;
   overflow: hidden;
 }
+
+.map-container {
+  display: flex;
+  flex-direction: column; /* Stellt sicher, dass h2 und form untereinander sind */
+  align-items: center; /* Zentriert horizontal */
+  justify-content: center; /* Zentriert vertikal */
+  background-color: black;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  text-align: center;
+  z-index: 1000;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+
 
 h2 {
   font-size: 3rem;
@@ -165,6 +187,23 @@ button {
   color: $yellow;
   font-size: 3rem;
   outline: 0px solid red;
+}
+
+.close-btn3 {
+  position: fixed;
+  top: 1.5rem;
+  right: 1rem;
+  font-size: 10rem;
+  cursor: pointer;
+  color: $black;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  outline: 0px solid red;
+  z-index: 1100;
 }
 
 .gallery {

@@ -10,10 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.querySelector(".close-btn");
   const filterContainer = document.querySelector(".filter-container");
 
+  const mapBtn = document.querySelector(".map-btn");
+  const closeBtn3 = document.querySelector(".close-btn3");
+  const mapContainer = document.querySelector(".map-container");
+
   gsap.set(filterContainer, {
-    opacity: 0,
+    opacity: 1,
     pointerEvents: "none", // Deaktiviert Interaktionen zu Beginn
     x: "100%", // Verschiebt den Container nach rechts außerhalb des sichtbaren Bereichs
+  });
+
+  gsap.set(mapContainer, {
+    opacity: 1,
+    pointerEvents: "none", // Deaktiviert Interaktionen zu Beginn
+    x: "-100%", // Verschiebt den Container nach rechts außerhalb des sichtbaren Bereichs
   });
 
   // Event Listener für das Öffnen des Menüs
@@ -27,13 +37,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  mapBtn.addEventListener("click", () => {
+    gsap.to(mapContainer, {
+      duration: 0.5,
+      opacity: 1,
+      pointerEvents: "auto",  // Aktiviert Interaktionen
+      x: "0%",  // Bewegt den Container in den sichtbaren Bereich
+      ease: "bounce.out",
+    });
+  });
+
   // Event Listener für das Schließen des Menüs
   closeBtn.addEventListener("click", () => {
     gsap.to(filterContainer, {
       duration: 0.5,
-      opacity: 0,
+      opacity: 1,
       pointerEvents: "none",  // Deaktiviert Interaktionen
       x: "100%",  // Bewegt den Container wieder nach rechts
+      ease: "bounce.out",
+    });
+  });
+
+  closeBtn3.addEventListener("click", () => {
+    gsap.to(mapContainer, {
+      duration: 0.5,
+      opacity: 1,
+      pointerEvents: "none",  // Deaktiviert Interaktionen
+      x: "-100%",  // Bewegt den Container wieder nach rechts
       ease: "bounce.out",
     });
   });
