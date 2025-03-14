@@ -25,4 +25,7 @@ class User < ApplicationRecord
   validates :address, presence: true, if: :venue?
   # validates :longitude, presence: true, if: :venue?
   # validates :latitude, presence: true, if: :venue?
+
+  has_many :reviews, dependent: :destroy
+  has_many :received_reviews, class_name: "Review", foreign_key: "reviewed_id", dependent: :destroy
 end

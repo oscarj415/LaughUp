@@ -8,6 +8,19 @@
   <%= event.title %>
   <% end %></p>
 
+<h2>Reviews about <%= @user.user_name %></h2>
+
+<% if @user.received_reviews.any? %>
+  <% @user.received_reviews.each do |review| %>
+    <div class="review-card">
+      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
+      <p><strong>Comment:</strong> <%= review.content %></p>
+      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
 
 <% elsif @user.user_type == "venue" %>
   <h2>Venue Profile</h2>
@@ -22,6 +35,19 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<h2>Reviews about <%= @user.user_name %></h2>
+
+<% if @user.received_reviews.any? %>
+  <% @user.received_reviews.each do |review| %>
+    <div class="review-card">
+      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
+      <p><strong>Comment:</strong> <%= review.content %></p>
+      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
 
 
 
