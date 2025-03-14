@@ -1,55 +1,27 @@
-
-<%# ___________________________ %>
 <div class="gallery">
 <br>
   <div class="head-text">
 <h4>Upcoming Events:</h4>
 </div>
 
+<% @events.each do |event| %>
   <div class="items">
   <div class=comedian-img>
-    <%= image_tag "justin_small.png", alt: "Comedian Justin" %>
-  </div>
-  <div class=info-text>
-  Justin Small<br><br>
-  MO, 10.03<br>20.00 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
-  </div>
+<%= link_to event_path(event), class: "img-a" do %>
+  <!--  comedian image here  -->
   </div>
 
-  <div class="items">
-  <div class=comedian-img>
-    <%= image_tag "olaf_schubert.png", alt: "Comedian Justin" %>
-  </div>
   <div class=info-text>
-  Olaf Schubert<br><br>
-  MO, 11.03<br>19.00 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
+  <strong><%= event.comedian.user_name %></strong><br><br>
+        <%= event.date_time.strftime("%A, %d.%m") %><br>
+        <%= event.date_time.strftime("%H.%M UHR") %><br><br>
+        <%= event.venue.user_name %><br>
+        <%= event.venue.address %>
   </div>
   </div>
-
-  <div class="items">
-  <div class=comedian-img>
-    <%= image_tag "atze.png", alt: "Comedian Justin" %>
-  </div>
-  <div class=info-text>
-  Atze Schroeder<br><br>
-  MO, 12.03<br>19.30 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
-  </div>
-  </div>
-
-  <div class="items">
-  <div class=comedian-img>
-    <%= image_tag "kevin_hart.png", alt: "Comedian Justin" %>
-  </div>
-  <div class=info-text>
-  Kevin Hart<br><br>
-  MO, 13.03<br>20.30 UHR<br><br>Schinkel Bar<br>Franzoesische Str. 30<br>10117 Berlin
-  </div>
-  </div>
-
+  <% end %>
+<% end %>
 </div>
-
-<%# __________________________________ %>
-  <%# added ________________________ %>
 
 <div class="filter-container">
         <div class="close-btn">X</div>
@@ -81,7 +53,7 @@
         </form>
     </div>
 
-<div class="map-btn">
+<div class="map-btn" >
 Show Map
 </div>
 
@@ -91,58 +63,10 @@ Show Map
 
   <%# till here _______________________ %>
 
-
-
-<%# added ______________________ %>
-<div class="filter-container">
-        <div class="close-btn">X</div>
-        <h2>Filter</h2>
-        <form action="#" method="GET">
-            <div class="filter-field">
-                <label for="filter1"></label>
-                <input type="text" id="filter1" name="filter1" placeholder="Adress">
-                <button type="submit" name="submit1"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-            <div class="filter-field">
-                <label for="filter2"></label>
-                <input type="text" id="filter2" name="filter2" placeholder="Date">
-                <button type="submit" name="submit2"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-            <div class="filter-field">
-                <label for="filter3"></label>
-                <input type="text" id="filter3" name="filter3" placeholder="Comedian">
-                <button type="submit" name="submit3"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-            <div class="filter-field">
-                <label for="filter4"></label>
-                <input type="text" id="filter4" name="filter4" placeholder="Venue">
-                <button type="submit" name="submit4"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </form>
-    </div>
-
-<div class="map-btn">
-Show Map
-</div>
-
-<div class="filter-btn">
-<i class="fa-solid fa-sliders"></i>
-</div>
-<%# till here __________________________ %>
-
 <div class="back-btn-container">
   <%= link_to "Home", root_path, class: "back-btn" %>
 </div>
 
-<ul>
-  <% @events.each do |event| %>
-    <li>
-<strong><%= link_to "event: #{event.id}", event_path(event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
-  <% end %>
-</ul>
 
 <div style="width: 100%; height: 600px;"
   data-controller="map"
