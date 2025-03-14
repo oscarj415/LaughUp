@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     @markers = @venues.geocoded.map do |venue|
       {
         lat: venue.latitude,
-        lng: venue.longitude
+        lng: venue.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {venue: venue})
       }
     end
   end
@@ -19,6 +20,12 @@ class UsersController < ApplicationController
 
   def show
     set_user
+      @markers =
+        [{
+          lat: @user.latitude,
+          lng: @user.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: {venue: @user})
+          }]
     # @events = @user.events_as_comedian
     # @events = @user.events_as_venue
     @previous_event = Event.find(params[:previous_event_id])

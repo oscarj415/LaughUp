@@ -2,12 +2,28 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @events = Event.all
+    @venues = User.venue
+
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @venues.geocoded.map do |venue|
+      {
+        lat: venue.latitude,
+        lng: venue.longitude,
+        info_window_html: render_to_string(partial: "users/info_window", locals: {venue: venue})
+      }
+    end
   end
 
   def show
     set_event
     @comedian = @event.comedian
     @venue = @event.venue
+    @markers =
+        [{
+          lat: @venue.latitude,
+          lng: @venue.longitude,
+          info_window_html: render_to_string(partial: "users/info_window", locals: {venue: @venue})
+          }]
   end
 
   def new
