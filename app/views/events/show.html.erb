@@ -12,51 +12,82 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<div data-controller="review">
 
-<div class="review-comedian-button">
-  <button type="button" class="btn btn-primary px-3 py-2" style="min-width: auto; width: auto;" action="click">Write a review for comedian</button>
+  <div class="review-comedian-button">
+    <button type="button"
+            class="btn btn-primary px-3 py-2"
+            style="min-width: auto; width: auto;"
+            data-action="click->review#showComedianReview">
+      Write a review for comedian
+    </button>
+  </div>
+
+  <div class="review-venue-button mt-3">
+    <button type="button"
+            class="btn btn-primary px-3 py-2"
+            style="min-width: auto; width: auto;"
+            data-action="click->review#showVenueReview">
+      Write a review for venue
+    </button>
+  </div>
+
+  <div class="review-comedian-form d-none" data-review-target="comedianReview">
+    <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
+      <%= hidden_field_tag :user_type, "comedian" %>
+      <%= hidden_field_tag :reviewed_id, @event.comedian_id %>
+
+      <div class="form-group">
+        <%= label_tag :rating, "Rating for this Comedian (1 to 5)" %>
+        <%= select_tag :rating, options_for_select((1..5).map { |n| ["★" * n, n] }), prompt: "Select Rating", class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :content, "Your Comment" %>
+        <%= text_area_tag :content, "", class: "form-control", placeholder: "Write your comment for the comedian here...", rows: 4, required: true %>
+      </div>
+
+      <div class="form-actions mt-2">
+        <%= submit_tag "Submit Review", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="review-venue-form d-none" data-review-target="venueReview">
+    <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
+      <%= hidden_field_tag :user_type, "venue" %>
+      <%= hidden_field_tag :reviewed_id, @event.venue_id %>
+
+      <div class="form-group">
+        <%= label_tag :rating, "Rating for this Venue (1 to 5)" %>
+        <%= select_tag :rating, options_for_select((1..5).map { |n| ["★" * n, n] }), prompt: "Select Rating", class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :content, "Your Comment" %>
+        <%= text_area_tag :content, "", class: "form-control", placeholder: "Write your comment for the venue here...", rows: 4, required: true %>
+      </div>
+
+      <div class="form-actions mt-2">
+        <%= submit_tag "Submit Review", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div class="review-venue-button mt-3">
-  <button type="button" class="btn btn-primary px-3 py-2" style="min-width: auto; width: auto;" action="click">Write a review for venue</button>
-</div>
 
-<div class="review-comedian-form">
-  <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
-    <%= hidden_field_tag :user_type, "comedian" %>
-
-    <div class="form-group">
-      <%= label_tag :rating, "Rating (1 to 5)" %>
-      <%= select_tag :rating, options_for_select((1..5).map { |n| ["★" * n, n] }), prompt: "Select Rating", class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag :content, "Your Comment" %>
-      <%= text_area_tag :content, "", class: "form-control", placeholder: "Write your comment here...", rows: 4, required: true %>
-    </div>
-
-    <div class="form-actions mt-2">
-      <%= submit_tag "Submit Review", class: "btn btn-success" %>
-    </div>
+<div data-controller="interest">
+  <div class="going-button mt-3">
+   <%= form_with url: event_interests_path(@event), method: :post, local: true do %>
+  <% if @event.interests.exists?(user: current_user) %>
+    <%= submit_tag "Cancel Interest", class: "btn btn-danger px-3 py-2" %>
+  <% else %>
+    <%= submit_tag "I'm going", class: "btn btn-primary px-3 py-2" %>
   <% end %>
-</div>
+<% end %>
+  </div>
 
-<div class="review-venue-form">
-  <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
-    <%= hidden_field_tag :user_type, "venue" %>
-
-    <div class="form-group">
-      <%= label_tag :rating, "Rating (1 to 5)" %>
-      <%= select_tag :rating, options_for_select((1..5).map { |n| ["★" * n, n] }), prompt: "Select Rating", class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag :content, "Your Comment" %>
-      <%= text_area_tag :content, "", class: "form-control", placeholder: "Write your comment here...", rows: 4, required: true %>
-    </div>
-
-    <div class="form-actions mt-2">
-      <%= submit_tag "Submit Review", class: "btn btn-success" %>
-    </div>
-  <% end %>
-</div>
+  <div id="footer" class="footer mt-3">
+    Interested users: <%= @event.interests.count %>
+  </div>
