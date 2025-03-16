@@ -1,38 +1,68 @@
-<h1><%= @event.title %></h1>
-<p><%= @event.description %></p>
+<div class="show-container">
 
-<strong><%= link_to "events", events_path, class: "text-decoration-none", style: "color: black;" %></strong>
+<div class="event-info">
+  <h1 class="event-title"><%= @event.title %></h1>
 
-<strong><%= link_to "comedian", user_path(@comedian, previous_event_id: @event.id), class: "text-decoration-none", style: "color: black;" %></strong>
+  <div class="event-details">
+    <p class="event-date-time">
+      <%= @event.date_time.strftime("%A, %d.%m") %> <br>
+      <%= @event.date_time.strftime("%H:%M") %>
+      <%= @event.description %>
+    </p>
 
-<strong><%= link_to "venue", user_path(@venue, previous_event_id: @event.id), class: "text-decoration-none", style: "color: black;" %></strong>
+    <p class="event-venue">
+      <%= @event.venue.user_name %> <br>
+      <%= @event.venue.address %>
+    </p>
+  </div>
+</div>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div class="map">
+<div class="event-map"
+        style="width: 363px; height: 149px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+</div>
 
-<div data-controller="review">
+<div class="event-attendance">
+  <p>👤 <%= @event.interests.count %> Joining</p>
+</div>
 
+
+<ul>
+<li>
+<strong><%= link_to "➶ Back to all events", events_path, class: "show-link" %></strong>
+</li>
+<li><strong><%= link_to "➶ #{@event.comedian.user_name}", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong></li>
+
+<li><strong><%= link_to "➶ #{@event.venue.user_name}", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
+</li>
+</ul>
+
+
+<div data-controller="interest">
+  <div class="going-button mb-3">
+    <%= form_with url: event_interests_path(@event), method: :post, local: true do %>
+    <% if @event.interests.exists?(user: current_user) %>
+    <%= submit_tag "Cancel Interest", class: "interest-button" %>
+    <% else %>
+    <%= submit_tag "I'm going", class: "interest-button" %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="review-button" data-controller="review">
   <div class="review-comedian-button">
     <button type="button"
-            class="btn btn-primary px-3 py-2"
-            style="min-width: auto; width: auto;"
+            class="interest-button"
+            style="height: auto"
             data-action="click->review#showComedianReview">
-      Write a review for comedian
+      Comedian Review
     </button>
-  </div>
-
-  <div class="review-venue-button mt-3">
-    <button type="button"
-            class="btn btn-primary px-3 py-2"
-            style="min-width: auto; width: auto;"
-            data-action="click->review#showVenueReview">
-      Write a review for venue
-    </button>
-  </div>
-
-  <div class="review-comedian-form d-none" data-review-target="comedianReview">
+    <div class="review-comedian-form d-none" data-review-target="comedianReview">
     <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
       <%= hidden_field_tag :user_type, "comedian" %>
       <%= hidden_field_tag :reviewed_id, @event.comedian_id %>
@@ -48,13 +78,20 @@
       </div>
 
       <div class="form-actions mt-2">
-        <%= submit_tag "Submit Review", class: "btn btn-success" %>
+        <%= submit_tag "Submit Review", class: "submit-btn" %>
       </div>
     <% end %>
   </div>
+  </div>
 
-
-  <div class="review-venue-form d-none" data-review-target="venueReview">
+  <div class="review-venue-button">
+    <button type="button"
+            class="interest-button"
+            style="height: auto"
+            data-action="click->review#showVenueReview">
+      Venue Review
+    </button>
+      <div class="review-venue-form d-none" data-review-target="venueReview">
     <%= form_with url: event_reviews_path(@event), method: :post do |f| %>
       <%= hidden_field_tag :user_type, "venue" %>
       <%= hidden_field_tag :reviewed_id, @event.venue_id %>
@@ -70,24 +107,11 @@
       </div>
 
       <div class="form-actions mt-2">
-        <%= submit_tag "Submit Review", class: "btn btn-success" %>
+        <%= submit_tag "Submit Review", class: "submit-btn" %>
       </div>
     <% end %>
   </div>
+  </div>
+
 </div>
-
-
-<div data-controller="interest">
-  <div class="going-button mt-3">
-   <%= form_with url: event_interests_path(@event), method: :post, local: true do %>
-  <% if @event.interests.exists?(user: current_user) %>
-    <%= submit_tag "Cancel Interest", class: "btn btn-danger px-3 py-2" %>
-  <% else %>
-    <%= submit_tag "I'm going", class: "btn btn-primary px-3 py-2" %>
-  <% end %>
-<% end %>
-  </div>
-
-  <div id="footer" class="footer mt-3">
-    Interested users: <%= @event.interests.count %>
-  </div>
+</div>
