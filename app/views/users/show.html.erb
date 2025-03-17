@@ -60,7 +60,7 @@
 
 <%# Write all comedian related code above this line %>
 <% elsif @user.user_type == "venue" %>
-<%= image_tag "ven.jpg", class: "venue-pic"%>
+<%= cl_image_tag @user.photo.key, class: "venue-pic" if @user.photo.attached? %>
   <h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
   <p class="description">
   <%= @user.description %>
@@ -104,10 +104,8 @@
 <% end %>
 </p>
 
-<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached?%>
 
-
-  <strong><%= link_to "➶ Back to all events", event_path(@previous_event),  class: "show-link" %></strong>    </li>
+  <strong><%= link_to "➶ Back to all events", :back,  class: "show-link" %></strong>    </li>
 
 
 <%# Write all venue related code above this line %>

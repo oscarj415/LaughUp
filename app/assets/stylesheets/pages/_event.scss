@@ -108,11 +108,18 @@ ul{
   }
 }
 
-.review-button{
+.review-buttons-wrapper {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
+.review-forms-wrapper {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+ }
 
 .review-comedian-form, .review-venue-form {
   width: 170px;
