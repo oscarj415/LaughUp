@@ -285,19 +285,24 @@ h4{
   padding: 30px;
 }
 
-.back-btn{
-padding: 10px;
-text-decoration: none;
-width: 270px;
-height: 49px;
-top: 1531px;
-left: 132px;
-border-radius: 20px;
-background: $purple;
-font-weight: 400px;
-font-size: 32px;
-line-height: 100%;
-color: #FFFFFF;
+.back-btn {
+  height: auto;
+  width: 100%;
+  align-items: center;
+  border: 1px solid black;
+  color: black;
+  font-size: 2rem;
+  line-height: 1.5em;
+  border-radius: 20px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: 250ms ease-out;
+  text-decoration: none;
+
+  &:hover{
+    color: $yellow;
+    background-color: black;
+  }
 }
 
 @media (min-width: 600px) {
