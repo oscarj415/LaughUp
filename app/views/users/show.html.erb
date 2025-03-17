@@ -1,7 +1,7 @@
 <div class="VC-container">
 <% if @user.user_type == "comedian" %>
 
-  <h1>  <%= @user.user_name %> </h1>
+  <h1 class="comedian-name">  <%= @user.user_name %> </h1>
   <%= image_tag "justin_small.png", class: "comedian-pic"%>
   <p class="review"><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
@@ -19,7 +19,7 @@
   <p class="description"><%= @user.description %></p>
 
 <h3>Past Events</h3>
-  <ul> <% @user.events_as_comedian.each do |event| %>
+  <ul class="event-list"> <% @user.events_as_comedian.each do |event| %>
   <li>
 <%= event.title %>
   </li>
@@ -53,22 +53,19 @@
   </div>
 
 
-  <%= link_to "➶ Back to all events", :back, class: "show-link" %>
+  <%= link_to "➶ Back to an event", :back, class: "show-link" %>
 
 
 
 
 <%# Write all comedian related code above this line %>
 <% elsif @user.user_type == "venue" %>
+<h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
 <%= cl_image_tag @user.photo.key, class: "venue-pic" if @user.photo.attached? %>
-  <h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
   <p class="description">
+  here will be a Venue Description
   <%= @user.description %>
-  <%= @user.description %>
-  <%= @user.description %>
-  <%= @user.description %>
-  <%= @user.description %>
-  <%= @user.description %>
+
   </p>
 
 <div class="map">
@@ -81,14 +78,14 @@
 </div>
 
 
-  <h4 class="past"> Past events </h4>
-  <p class="description"><% @user.events_as_venue.each do |event| %>
+  <h3 class="past"> Past events </h3>
+  <p class="event-list"><% @user.events_as_venue.each do |event| %>
   <%= event.title %>
   <% end %></p>
 
 
-<h4>Reviews about </h4>
-<p><%= @user.user_name %></p>
+<h3>Reviews about </h3>
+<p class="review-about"><%= @user.user_name %></p>
 
 
 <p class="review"> <% if @user.received_reviews.any? %>
@@ -105,7 +102,7 @@
 </p>
 
 
-  <strong><%= link_to "➶ Back to all events", :back,  class: "show-link" %></strong>    </li>
+  <strong><%= link_to "➶ Back to an event", :back,  class: "show-link" %></strong>    </li>
 
 
 <%# Write all venue related code above this line %>
