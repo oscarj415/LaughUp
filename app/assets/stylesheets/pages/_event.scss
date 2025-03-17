@@ -89,7 +89,7 @@ ul{
   list-style-type: none;
   padding: 0;
   text-align: center;
-  line-height: 2.0em;
+  line-height: 2.75em;
 
 
   .show-link{
@@ -108,22 +108,14 @@ ul{
   }
 }
 
-// .review-button{
-//   display: flex;
-//   gap: 3px;
-// }
-
-.review-buttons-wrapper {
+.review-button{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
   gap: 1rem;
 }
 
 
 .review-comedian-form, .review-venue-form {
-  width: auto;
+  width: 170px;
   margin-top: 20px;
   padding: 3px;
   border: 1px solid black;
