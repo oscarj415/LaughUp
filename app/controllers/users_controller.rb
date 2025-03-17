@@ -28,7 +28,7 @@ class UsersController < ApplicationController
           }]
     # @events = @user.events_as_comedian
     # @events = @user.events_as_venue
-    @previous_event = Event.find(params[:previous_event_id])
+    # @previous_event = Event.find(params[:previous_event_id])
   end
 
   private
@@ -39,5 +39,6 @@ class UsersController < ApplicationController
 
   def users_params
     params.require(:user).permit(:xxx, :yyy)
+    # params.require(:article).permit(:title, :body, :photo)
   end
 end

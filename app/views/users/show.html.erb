@@ -3,7 +3,7 @@
   <h2>Comedian Profile</h2>
   <p>Welcome, <%= @user.user_name %>! Here’s your upcoming show:</p>
   <p><%= @user.description %></p>
-  <strong><%= link_to "Back", event_path(@previous_event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
+  <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
   <p><% @user.events_as_comedian.each do |event| %>
   <%= event.title %>
   <% end %></p>
@@ -22,11 +22,13 @@
   <p>No reviews yet.</p>
 <% end %>
 
+
+<%# Write all comedian related code above this line %>
 <% elsif @user.user_type == "venue" %>
   <h2>Venue Profile</h2>
   <p>Welcome to <%= @user.user_name %>, the best venue in town!</p>
   <p><%= @user.description %></p>
-  <strong><%= link_to "Back", event_path(@previous_event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
+  <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
   <p><% @user.events_as_venue.each do |event| %>
   <%= event.title %>
   <% end %></p>
@@ -49,13 +51,16 @@
   <p>No reviews yet.</p>
 <% end %>
 
+<%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached?%>
 
 
 
+
+<%# Write all venue related code above this line %>
 <% else %>
   <h2>Standard User Profile</h2>
   <p>Welcome, <%= @user.name %>!</p>
     <p><%= @user.description %></p>
-  <strong><%= link_to "Back", event_path(@previous_event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
+  <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
 
 <% end %>
