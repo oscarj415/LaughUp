@@ -3,7 +3,7 @@
 
   <h1>  <%= @user.user_name %> </h1>
   <%= image_tag "justin_small.png", class: "comedian-pic"%>
-  <p><% if @user.received_reviews.any? %>
+  <p class="review"><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
     <div class="review-card">
       <p><strong>Rating:</strong> <%= review.rating %> ★</p>
@@ -16,7 +16,7 @@
 <% end %>
 </p>
 
-  <p><%= @user.description %></p>
+  <p class="description"><%= @user.description %></p>
 
 <h3>Past Events</h3>
   <ul> <% @user.events_as_comedian.each do |event| %>
@@ -60,21 +60,38 @@
 
 <%# Write all comedian related code above this line %>
 <% elsif @user.user_type == "venue" %>
-  <h2>Venue Profile</h2>
-  <p>Welcome to <%= @user.user_name %>, the best venue in town!</p>
-  <p><%= @user.description %></p>
-  <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
-  <p><% @user.events_as_venue.each do |event| %>
+<%= image_tag "ven.jpg", class: "venue-pic"%>
+  <h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
+  <p class="description">
+  <%= @user.description %>
+  <%= @user.description %>
+  <%= @user.description %>
+  <%= @user.description %>
+  <%= @user.description %>
+  <%= @user.description %>
+  </p>
+
+<div class="map">
+  <div class="event-map"
+    style="width: 364px; height: 329px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+
+
+  <h4 class="past"> Past events </h4>
+  <p class="description"><% @user.events_as_venue.each do |event| %>
   <%= event.title %>
   <% end %></p>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<h2>Reviews about <%= @user.user_name %></h2>
 
-<% if @user.received_reviews.any? %>
+<h4>Reviews about </h4>
+<p><%= @user.user_name %></p>
+
+
+<p class="review"> <% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
     <div class="review-card">
       <p><strong>Rating:</strong> <%= review.rating %> ★</p>
@@ -83,12 +100,14 @@
     </div>
   <% end %>
 <% else %>
-  <p>No reviews yet.</p>
+  <p class="review">No reviews yet.</p>
 <% end %>
+</p>
 
 <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached?%>
 
 
+  <strong><%= link_to "➶ Back to all events", event_path(@previous_event),  class: "show-link" %></strong>    </li>
 
 
 <%# Write all venue related code above this line %>
@@ -96,7 +115,9 @@
   <h2>Standard User Profile</h2>
   <p>Welcome, <%= @user.name %>!</p>
     <p><%= @user.description %></p>
+
   <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
+
 
 <% end %>
 </div>
