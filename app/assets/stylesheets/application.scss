@@ -10,6 +10,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/event";
 
 
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
@@ -104,8 +105,6 @@ html, body {
   pointer-events: none;
   overflow: hidden;
 }
-
-
 
 h2 {
   font-size: 3rem;
@@ -223,14 +222,12 @@ h4{
 }
 
 .items {
-  display: block;
+  display: flex;
   width: calc(100% - 1rem);
   min-height: 250px;
   outline: 4px solid $purple;
   border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+  align-items: stretch;
   overflow: hidden;
 }
 
@@ -240,19 +237,27 @@ h4{
   color: inherit;
 }
 
-  .comedian-img {
-  flex: 1.5;
-  }
+.comedian-img {
+  flex: 1.2;
+  min-width: 40%;
+  max-width: 40%;
+  display: flex;
+
 
   img {
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
   }
+}
+
 
 .info-text {
   flex: 1.8;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .link{
