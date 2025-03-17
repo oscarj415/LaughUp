@@ -9,7 +9,9 @@ class EventsController < ApplicationController
       {
         lat: venue.latitude,
         lng: venue.longitude,
-        info_window_html: render_to_string(partial: "users/info_window", locals: {venue: venue})
+        info_window_html: render_to_string(partial: "users/info_window", locals: {venue: venue}),
+        marker_html: render_to_string(partial: "users/marker")
+
       }
     end
   end
@@ -22,7 +24,9 @@ class EventsController < ApplicationController
         [{
           lat: @venue.latitude,
           lng: @venue.longitude,
-          info_window_html: render_to_string(partial: "users/info_window", locals: {venue: @venue})
+          info_window_html: render_to_string(partial: "users/info_window", locals: {venue: @venue}),
+          marker_html: render_to_string(partial: "users/marker")
+
           }]
   end
 
