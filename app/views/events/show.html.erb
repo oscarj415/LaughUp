@@ -1,17 +1,17 @@
 <div class="show-container">
 
 <div class="event-info">
-  <h1 class="event-title"><%= @event.title %></h1>
+  <h1 class="event-title"><%= @event.title %></h1><br>
 
   <div class="event-details">
     <p class="event-date-time">
-      <%= @event.date_time.strftime("%A, %d.%m") %> <br>
-      <%= @event.date_time.strftime("%H:%M") %>
-      <%= @event.description %>
+      <%= @event.date_time.strftime("%A, %d.%m") %>
+      <%= @event.date_time.strftime("%H:%M") %><br>
+      <%= @event.description %><br>
     </p>
 
     <p class="event-venue">
-      <%= @event.venue.user_name %> <br>
+      <%= @event.venue.user_name %><br>
       <%= @event.venue.address %>
     </p>
   </div>
@@ -27,17 +27,17 @@
 </div>
 
 <div class="event-attendance">
-  <p>👤 <%= @event.interests.count %> Joining</p>
+  <p>🤩 <%= @event.interests.count %> Joining</p>
 </div>
 
 
 <ul>
 <li>
-<strong><%= link_to "➶ Back to all events", events_path, class: "show-link" %></strong>
+<strong><%= link_to "Back to Events ➶", events_path, class: "show-link" %></strong>
 </li>
-<li><strong><%= link_to "➶ #{@event.comedian.user_name}", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong></li>
+<li><strong><%= link_to "#{@event.comedian.user_name} ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong></li>
 
-<li><strong><%= link_to "➶ #{@event.venue.user_name}", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
+<li><strong><%= link_to "#{@event.venue.user_name} ➶", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
 </ul>
 
@@ -58,7 +58,6 @@
   <div class="review-comedian-button">
     <button type="button"
             class="interest-button"
-            style="height: auto"
             data-action="click->review#showComedianReview">
       Comedian Review
     </button>
