@@ -1,0 +1,38 @@
+.venue-pic{
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 362px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.map{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.event-map {
+  display: block;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.past {
+  color: black
+}
+
+.venue-title, .past {
+  margin-top: 10px;
+}
+
+.description{
+  font-family: Nunito;
+  margin-bottom: 0.5rem;
+}
