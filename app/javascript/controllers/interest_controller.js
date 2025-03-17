@@ -18,8 +18,22 @@ export default class extends Controller {
         "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content // X-CSRF-Token: Necessary for Rails to verify that the request is coming from an authorized session (CSRF protection).
       }
     })
-    .then(response => response.json())
+
+    .then(response => {
+      if (response.status === 401) {
+        window.location.href = "/users/sign_in";
+        return;
+      }
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Received non-JSON response:", contentType);
+        return;
+      }
+      return response.json();
+    })
+
     .then(data => {
+      if (!data) return;
       console.log(data);
 
       if (data.status === "interested") {
