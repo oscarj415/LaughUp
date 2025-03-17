@@ -4,14 +4,18 @@
       <span class="laugh">LaughUp</span>
     <% end %>
 
-    <button class="navbar-toggler" type="button"
-    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </button>
+    <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="true"
+        aria-label="Toggle navigation"
+        data-turbo="false">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="close-btn2">X</div>
@@ -24,7 +28,7 @@
             <%= link_to "About Us", "#", class: "nav-link"  %>
           </li>
           <li class="nav-item">
-            <%= link_to "Events", "#", class: "nav-link"  %>
+            <%= link_to "Events", events_path, class: "nav-link"  %>
           </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link"  %>

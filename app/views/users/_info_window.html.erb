@@ -1,2 +1,6 @@
 <h2><%= venue.user_name %></h2>
 <p><%= venue.address %></p>
+<p><%= link_to venue.user_name, user_path(venue) %></p>
+ <p><% venue.events_as_venue.first(3).each do |event| %>
+  <%= link_to event.title, event_path(event) %>
+  <% end %></p>
