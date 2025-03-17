@@ -27,10 +27,6 @@
 </div>
 </div>
 
-<div class="event-attendance">
-  <p>🤩 <%= @event.interests.count %> Joining</p>
-</div>
-
 
 <ul>
 <li>
@@ -43,11 +39,17 @@
 </ul>
 
 
-<div data-controller="interest">
+ <div data-controller="interest"> <%# call Stimulus %>
+
+<div class="event-attendance">
+  <p>🤩 <span data-interest-target="count"><%= @event.interests.count %></span> Joining</p> <%# "data-interest-target="count"" make JS to be able to access with "this.countTarget" %>
+</div>
+
   <div class="going-button mb-3">
-    <%= form_with url: event_interests_path(@event), method: :post, local: true do %>
+  <%= form_with url: event_interests_path(@event), method: :post, local: false,
+      data: { action: "submit->interest#toggle", interest_target: "form" } do %> <%# data-action="submit->interest#toggle": This triggers the toggle function in InterestController when the form is submitted %>
     <% if @event.interests.exists?(user: current_user) %>
-    <%= submit_tag "Cancel Interest", class: "interest-button" %>
+    <%= submit_tag "Cancel", class: "interest-button" %>
     <% else %>
     <%= submit_tag "I'm going", class: "interest-button" %>
     <% end %>
