@@ -7,10 +7,12 @@ class InterestsController < ApplicationController
 
     if @interest.persisted?
       @interest.destroy
+      status = "canceled"
     else
       @interest.save
+      status = "interested"
     end
 
-    redirect_to event_path(@event)
+    render json: { status: status, count: @event.interests.count } # return json with status: and count:
   end
 end
