@@ -1,0 +1,154 @@
+
+.show-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+}
+
+h1{
+  font-family: BM-HANNA;
+}
+
+.event-info {
+  text-align: center;
+  padding: 1rem;
+}
+
+.event-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.event-details {
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.event-date-time {
+  margin-bottom: 0.5rem;
+}
+
+.event-venue {
+  font-weight: normal;
+}
+
+.map{
+  text-align: center;
+}
+
+.event-map {
+  display: block;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.event-attendance {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 19px;
+}
+
+
+.interest-button {
+  height: 100px;
+  width: 180px;
+  border: 3px solid black;
+  align-items: center;
+  color: black;
+  font-size: 2rem;
+  border-radius: 40px;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover{
+    color: #000;
+    font-style: italic;
+  }
+}
+
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 30px;
+
+
+  .show-link{
+  color: black;
+  font-weight: 400;
+  font-size: 32px;
+  text-align: center;
+  text-decoration: none;
+  }
+
+  .show-link:hover{
+    text-decoration: underline;
+    font-style: italic;
+  }
+}
+
+.review-button{
+  display: flex;
+  gap: 3px;
+}
+
+
+.review-comedian-form, .review-venue-form {
+  width: 170px;
+  margin-top: 20px;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgb(252, 252, 241)
+
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #0000008f;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #2c2d2e;
+    outline: none;
+  }
+}
+
+.submit-btn{
+  background-color: $purple;
+
+  width: 150px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  margin: 0px auto;
+  cursor: pointer;
+}
+
+
+
+@media (min-width: 600px) {
+  .review-comedian-form, .review-venue-form {
+    width: 100%;
+  max-width: 600px;
+  }
+
+}
