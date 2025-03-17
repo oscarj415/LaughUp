@@ -96,14 +96,21 @@ ul{
   }
 }
 
-.review-button{
+// .review-button{
+//   display: flex;
+//   gap: 3px;
+// }
+
+.review-buttons-wrapper {
   display: flex;
-  gap: 3px;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 
 .review-comedian-form, .review-venue-form {
-  width: 170px;
+  width: 100%;
   margin-top: 20px;
   padding: 3px;
   border: 1px solid black;
