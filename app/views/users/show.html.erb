@@ -1,16 +1,8 @@
-
+<div class="VC-container">
 <% if @user.user_type == "comedian" %>
-  <h2>Comedian Profile</h2>
-  <p>Welcome, <%= @user.user_name %>! Here’s your upcoming show:</p>
-  <p><%= @user.description %></p>
-  <strong><%= link_to "Back", event_path(@previous_event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
-  <p><% @user.events_as_comedian.each do |event| %>
-  <%= event.title %>
-  <% end %></p>
-
-<h2>Reviews about <%= @user.user_name %></h2>
-
-<% if @user.received_reviews.any? %>
+  <h1>  <%= @user.user_name %> </h1>
+  <%= image_tag "justin_small.png", class: "comedian-pic"%>
+  <p><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
     <div class="review-card">
       <p><strong>Rating:</strong> <%= review.rating %> ★</p>
@@ -19,8 +11,50 @@
     </div>
   <% end %>
 <% else %>
-  <p>No reviews yet.</p>
+  <p class="review">No reviews yet.</p>
 <% end %>
+</p>
+
+  <p><%= @user.description %></p>
+
+<h3>Past Events</h3>
+  <ul> <% @user.events_as_comedian.each do |event| %>
+  <li>
+<%= event.title %>
+  </li>
+  <% end %></p>
+  </ul>
+
+    <div class="social-links d-flex justify-content-center mb-3">
+    <a
+      href="https://www.youtube.com/"
+      target="_blank"
+      title="Youtube Profile"
+      aria-label="Youtube Profile">
+      <i class="fa-brands fa-youtube"></i></i>
+    </a>
+
+    <a
+      href="https://instagram.com/"
+      target="_blank"
+      title="instagram Profile"
+      aria-label="Instagram Profile">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a
+      href="https://www.tiktok.com/"
+      target="_blank"
+      title="TikTok Profile"
+      aria-label="TikTok Profile">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </div>
+
+
+  <%= link_to "➶ Back to all events", event_path(@previous_event), class: "show-link" %>
+
+
 
 <% elsif @user.user_type == "venue" %>
   <h2>Venue Profile</h2>
@@ -59,3 +93,4 @@
   <strong><%= link_to "Back", event_path(@previous_event), class: "text-decoration-none", style: "color: black;" %></strong>    </li>
 
 <% end %>
+</div>
