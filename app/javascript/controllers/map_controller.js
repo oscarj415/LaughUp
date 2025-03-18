@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+import gsap from "gsap";
+
 
 export default class extends Controller {
   static values = {
@@ -21,6 +23,7 @@ export default class extends Controller {
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }),'top-left')
   }
+
   #fitMapToMarkers() {
     if (this.markersValue.length === 0) return; // If no markers, don't fit bounds
 
@@ -36,6 +39,7 @@ export default class extends Controller {
       this.map.setZoom(12);
     }
   }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html) // Add this
@@ -48,5 +52,22 @@ export default class extends Controller {
         .setPopup(popup) // Add this
         .addTo(this.map)
     });
+  }
+
+  resize() {
+    const mapElement = document.querySelector(".map");
+
+    gsap.to(mapElement, {
+      height: this.isExpanded ? "150px" : "500px",
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => {
+        setTimeout(() => {
+          this.map.resize();
+        }, 100);
+      },
+    });
+
+    this.isExpanded = !this.isExpanded;
   }
 }
