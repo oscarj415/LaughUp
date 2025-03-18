@@ -341,6 +341,9 @@ video {
 }
 
 .map {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
   width: 360px;
   height: 150px;
   overflow: hidden;
