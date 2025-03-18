@@ -86,18 +86,511 @@ puts "Created #{venue_data.size} venue users."
 # -------------------
 # Events
 # -------------------
-comedian_ids = User.where(user_type: :comedian).pluck(:id)
-venue_ids = User.where(user_type: :venue).pluck(:id)
+# comedian_ids = User.where(user_type: :comedian).pluck(:id)
+# venue_ids = User.where(user_type: :venue).pluck(:id)
 
-20.times do |i|
-  Event.create!(
-    comedian_id: comedian_ids.sample,
-    venue_id: venue_ids.sample,
-    title: "Event Title #{i + 1}",
-    description: "Event description #{i + 1}",
-    date_time: DateTime.now + i.days
-  )
+# 20.times do |i|
+#   Event.create!(
+#     comedian_id: comedian_ids.sample,
+#     venue_id: venue_ids.sample,
+#     title: "Event Title #{i + 1}",
+#     description: "Event description #{i + 1}",
+#     date_time: DateTime.now + i.days
+#   )
+# end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian = User.find_by(user_name: "Kat", user_type: :comedian)
+if comedian
+  # Randomly select a venue for the event
+  # venue = User.where(user_type: :venue).sample
+
+  # Create an event for the comedian "Kat" with a random venue
+    Event.create!(
+      comedian_id: comedian.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "The Laugh Lab",
+      description: "A stand-up comedy experiment where the funniest formulas are tested live!",
+      date_time: DateTime.new(2025, 3, 21, 20, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian.user_name}."
+else
+  puts "Comedian Kat not found."
 end
-puts "Created 5 events."
+if comedian
+# New Comedian
+    Event.create!(
+      comedian_id: comedian.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "Mic Drop Madness",
+      description: "A high-energy comedy showcase where every joke is a knockout!",
+      date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian.user_name}."
+else
+  puts "Comedian Kat not found."
+end
+if comedian
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Comedy Overload",
+        description: "A back-to-back lineup of comedians bringing non-stop laughs!",
+        date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+
+if comedian
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "LOL Factory",
+          description: "A comedy production line churning out top-tier jokes all night!",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian.user_name}."
+    else
+      puts "Comedian Kat not found."
+  end
+
+  if comedian
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Stand-Up & Deliver",
+          description: "A night where comedians take the stage and deliver their best material!",
+          date_time: DateTime.new(2025, 3, 23, 21, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian.user_name}."
+    else
+      puts "Comedian Kat not found."
+  end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian1 = User.find_by(user_name: "Soojin", user_type: :comedian)
+if comedian1
+  # Randomly select a venue for the event
+  # venue = User.where(user_type: :venue).sample
+
+  # Create an event for the comedian "Soojin" with a random venue
+    Event.create!(
+      comedian_id: comedian1.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "The Ha-Ha Hour",
+			description: "Sixty minutes of pure, unfiltered comedy gold!",
+      date_time: DateTime.new(2025, 3, 21, 20, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian1.user_name}."
+else
+  puts "Comedian Kat not found."
+end
+if comedian1
+# New Comedian
+    Event.create!(
+      comedian_id: comedian1.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "Killin’ It!",
+      description: "A comedy show where every performer is guaranteed to slay the crowd!",
+      date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian1.user_name}."
+else
+  puts "Comedian Kat not found."
+end
+if comedian1
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian1.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "The Punchline Pit",
+        description: "A no-frills, all-thrills comedy show where jokes hit hard!",
+        date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian1.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+
+if comedian1
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian1.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Giggles & Gags",
+          description: "A lighthearted comedy night full of witty wordplay and hilarious bits!",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian1.user_name}."
+    else
+      puts "Comedian Kat not found."
+  end
+
+  if comedian1
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian1.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "No Joke!",
+          description: "A comedy show that’s seriously funny!",
+          date_time: DateTime.new(2025, 3, 23, 21, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian1.user_name}."
+    else
+      puts "Comedian Kat not found."
+  end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian2 = User.find_by(user_name: "Olivier", user_type: :comedian)
+if comedian2
+  # Randomly select a venue for the event
+  # venue = User.where(user_type: :venue).sample
+
+  # Create an event for the comedian "Olivier" with a random venue
+    Event.create!(
+      comedian_id: comedian2.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "Funny Side Up",
+      description: "A fresh and lively stand-up showcase that serves comedy sunny side up!",
+      date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian2.user_name}."
+else
+  puts "Comedian Kat not found."
+end
+if comedian2
+# New Comedian
+    Event.create!(
+      comedian_id: comedian2.id,
+      venue_id: User.where(user_type: :venue).sample.id,
+      title: "Laughter Unleashed",
+      description: "A no-holds-barred comedy night where comedians go all out!",
+      date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+    )
+  puts "Created an event for comedian #{comedian2.user_name}."
+else
+  puts "Comedian Kat not found."
+end
+if comedian2
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian2.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "The Roast Room",
+        description: "A night of sharp wit and playful jabs, where no one is safe!",
+        date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian2.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian3 = User.find_by(user_name: "Olivier", user_type: :comedian)
+  if comedian3
+
+    # Create an event for the comedian "Olivier" with a random venue
+      Event.create!(
+        comedian_id: comedian3.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Punchlines & Pints",
+        description: "Enjoy top-tier comedy with a drink in hand at this laugh-out-loud show!",
+        date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian3.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian3
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian3.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "The Late Night Laughs Club",
+        description: "A comedy showcase that keeps the jokes rolling well into the night!",
+        date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian3.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian3
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian3.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Grin & Bear It",
+          description: "A comedy night full of relatable humor about life's everyday struggles!",
+          date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian3.user_name}."
+    else
+      puts "Comedian Kat not found."
+    end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian4 = User.find_by(user_name: "Lucas", user_type: :comedian)
+  if comedian4
+
+    # Create an event for the comedian "Lucas" with a random venue
+      Event.create!(
+        comedian_id: comedian4.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "The Giggle Gala",
+        description: "A classy yet hilarious night of stand-up, perfect for comedy lovers!",
+        date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian4.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian4
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian4.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Laugh Track Live",
+        description: "A live stand-up experience that feels like the best comedy special you've ever seen!",
+        date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian4.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian4
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian4.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Chuckles & Chills",
+          description: "A unique comedy show blending stand-up with unexpected twists and surprises!",
+          date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian4.user_name}."
+    else
+      puts "Comedian Kat not found."
+    end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian5 = User.find_by(user_name: "Sonia", user_type: :comedian)
+  if comedian5
+
+    # Create an event for the comedian "Sonia" with a random venue
+      Event.create!(
+        comedian_id: comedian5.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Laughter Overload",
+        description: "A comedy show so funny, it might cause uncontrollable giggles and snorts, bring your tissues for the tears of joy.",
+        date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian5.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian5
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian5.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Jokes and Giggles",
+        description: "Join us for a night of funny punchlines, ridiculous jokes, and a lot of laughs that'll leave your cheeks sore.",
+        date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian5.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian5
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian5.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "The Punchline Parade",
+          description: "Walk through a parade of hilarious jokes and unforgettable punchlines, all wrapped up in one night of pure comedy gold.",
+          date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian5.user_name}."
+    else
+      puts "Comedian Kat not found."
+    end
+
+# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
+comedian6 = User.find_by(user_name: "Oscar", user_type: :comedian)
+  if comedian6
+
+    # Create an event for the comedian "Oscar" with a random venue
+      Event.create!(
+        comedian_id: comedian6.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Comedy Under the Stars",
+        description: "Laugh under the open sky with stand-up comedians delivering their best routines while the stars above shine bright.",
+        date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian6.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian6
+  # New Comedian
+      Event.create!(
+        comedian_id: comedian6.id,
+        venue_id: User.where(user_type: :venue).sample.id,
+        title: "Laugh Your Socks Off",
+        description: "Get ready to lose your socks and your composure with a line-up of comedians that will make you laugh harder than ever.",
+        date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
+      )
+    puts "Created an event for comedian #{comedian6.user_name}."
+  else
+    puts "Comedian Kat not found."
+  end
+  if comedian6
+    # New Comedian
+        Event.create!(
+          comedian_id: comedian6.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "The Jester's Jamboree",
+          description: "A whimsical night filled with goofy jokes, silly stories, and a jester’s variety of humor, this comedy show will leave you in stitches.",
+          date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian6.user_name}."
+    else
+      puts "Comedian Kat not found."
+    end
+
+
+
+
+comedian7 = User.find_by(user_name: "Massih", user_type: :comedian)
+    if comedian7
+
+      # Create an event for the comedian "Massih" with a random venue
+        Event.create!(
+          comedian_id: comedian7.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Loco Laughs",
+          description: "Experience the wildest and most spontaneous comedy performances, where anything goes and everything’s fair game for a laugh.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian7.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian8 = User.find_by(user_name: "Nakul", user_type: :comedian)
+    if comedian8
+
+      # Create an event for the comedian "Nakul" with a random venue
+        Event.create!(
+          comedian_id: comedian8.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Comedic Chaos",
+          description: "Brace yourself for a night of unpredictable comedy where the jokes come fast, the punchlines hit hard, and chaos reigns supreme.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian8.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian9 = User.find_by(user_name: "Ahlam", user_type: :comedian)
+    if comedian9
+
+      # Create an event for the comedian "Ahlam" with a random venue
+        Event.create!(
+          comedian_id: comedian9.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Laughing All the Way",
+          description: "Come join us for a rollercoaster ride of jokes that will have you laughing all the way through the night, from start to finish.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian9.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian10 = User.find_by(user_name: "Otto", user_type: :comedian)
+    if comedian10
+
+      # Create an event for the comedian "Otto" with a random venue
+        Event.create!(
+          comedian_id: comedian10.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "The Comedy Circus",
+          description: "Step right up for a comedy circus like no other! A variety of stand-up acts will have you in stitches under the big top.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian10.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian11 = User.find_by(user_name: "Tamari", user_type: :comedian)
+    if comedian11
+
+      # Create an event for the comedian "Tamari" with a random venue
+        Event.create!(
+          comedian_id: comedian11.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Outrageous Laughter",
+          description: "Get ready for comedy so outrageous, it might make you gasp in disbelief before bursting into uncontrollable laughter.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian11.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian12 = User.find_by(user_name: "Yuta", user_type: :comedian)
+    if comedian12
+
+      # Create an event for the comedian "Yuta" with a random venue
+        Event.create!(
+          comedian_id: comedian12.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "The Gag Factory",
+          description: "Enter the factory where jokes are made, and laugh until your sides hurt from all the crafted gags and hilarious moments.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian12.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian13 = User.find_by(user_name: "Daruisz", user_type: :comedian)
+    if comedian13
+
+      # Create an event for the comedian "Daruisz" with a random venue
+        Event.create!(
+          comedian_id: comedian13.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "LOL Land",
+          description: "Step into LOL Land, where every corner is filled with absurd jokes, witty remarks, and comical surprises.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian13.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
+
+comedian14 = User.find_by(user_name: "Claire", user_type: :comedian)
+    if comedian14
+
+      # Create an event for the comedian "Claire" with a random venue
+        Event.create!(
+          comedian_id: comedian14.id,
+          venue_id: User.where(user_type: :venue).sample.id,
+          title: "Stand-Up Shenanigans",
+          description: "Expect nothing but pure, unfiltered shenanigans from comedians who aren’t afraid to push the boundaries of humor.",
+          date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
+        )
+      puts "Created an event for comedian #{comedian14.user_name}."
+    else
+      puts "Comedian Kat not found."
+end
 
 puts "Seeding completed!"
