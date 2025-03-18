@@ -34,7 +34,7 @@ export function setupAnimations() {
         opacity: 1,
         pointerEvents: "auto",
         x: "0%",
-        ease: "bounce.out",
+        ease: "power1.out",
         onComplete: () => filterBtn.disabled = false
       });
     });
@@ -48,7 +48,7 @@ export function setupAnimations() {
         opacity: 1,
         pointerEvents: "auto",
         x: "0%",
-        ease: "bounce.out",
+        ease: "power1.out",
         onComplete: () => mapBtn.disabled = false
       });
     });
@@ -61,7 +61,7 @@ export function setupAnimations() {
         opacity: 1,
         pointerEvents: "none",
         x: "100%",
-        ease: "bounce.out"
+        ease: "power1.out"
       });
     });
   }
@@ -73,9 +73,28 @@ export function setupAnimations() {
         opacity: 1,
         pointerEvents: "none",
         x: "-100%",
-        ease: "bounce.out"
+        ease: "power1.out"
       });
     });
   }
-});
+
+//   const mapElement = document.querySelector(".map");
+
+//   let isExpanded = false;
+
+//       mapElement.addEventListener("click", function () {
+//         gsap.to(mapElement, {
+//           height: isExpanded ? "150px" : "500px",
+//           duration: 0.5,
+//           ease: "power2.inOut",
+//           onComplete: () => {
+//             setTimeout(() => {
+//               console.log('DEBUG', map);
+//               map.resize();
+//             }, 100);
+//           },
+//         });
+//         isExpanded = !isExpanded;
+//       });
+  });
 }

@@ -19,10 +19,12 @@
 
 <div class="map">
 <div class="event-map"
-        style="width: 363px; height: 149px;"
+        style="width: 360px; height: 500px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-action="click->map#resize">
+</div>
 </div>
 
 
