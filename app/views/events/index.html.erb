@@ -35,31 +35,32 @@
 <div class="filter-container">
         <div class="close-btn">X</div>
         <h2>Filter</h2>
-        <form action="#" method="GET">
+        <form action="<%= events_path %>" method="GET">
             <div class="filter-field">
                 <label for="filter1"></label>
-                <input type="text" id="filter1" name="filter1" placeholder="Adress">
+                <input type="text" id="filter1" name="address" placeholder="Address">
                 <button type="submit" name="submit1"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
             <div class="filter-field">
                 <label for="filter2"></label>
-                <input type="text" id="filter2" name="filter2" placeholder="Date">
+                <input type="date" id="filter2" name="date" placeholder="Date">
                 <button type="submit" name="submit2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
             <div class="filter-field">
                 <label for="filter3"></label>
-                <input type="text" id="filter3" name="filter3" placeholder="Comedian">
+                <input type="text" id="filter3" name="comedian" placeholder="Comedian">
                 <button type="submit" name="submit3"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
             <div class="filter-field">
                 <label for="filter4"></label>
-                <input type="text" id="filter4" name="filter4" placeholder="Venue">
+                <input type="text" id="filter4" name="venue" placeholder="Venue">
                 <button type="submit" name="submit4"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>
+        <%= link_to "Reset", events_path, class: "reset" %>
     </div>
 
 

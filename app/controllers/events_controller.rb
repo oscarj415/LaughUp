@@ -14,6 +14,27 @@ class EventsController < ApplicationController
 
       }
     end
+
+    if params[:address].present?
+      @events = @events.joins(:venue).where("users.address ILIKE ?", "%#{params[:address]}%")
+    end
+
+    if params[:date].present?
+      begin
+        date = Date.parse(params[:date])
+        @events = @events.where(date_time: date.beginning_of_day..date.end_of_day)
+      rescue ArgumentError
+        flash[:alert] = "Invalid date format. Please use YYYY-MM-DD."
+      end
+    end
+
+    if params[:comedian].present?
+      @events = @events.joins(:comedian).where("users.user_name ILIKE ?", "%#{params[:comedian]}%")
+    end
+
+    if params[:venue].present?
+      @events = @events.joins(:venue).where("users.user_name ILIKE ?", "%#{params[:venue]}%")
+    end
   end
 
   def show
