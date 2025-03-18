@@ -8,11 +8,11 @@
     <p class="event-date-time">
       <%= @event.date_time.strftime("%A, %d.%m") %>
       <%= @event.date_time.strftime("%H:%M") %><br>
-      <%= @event.description %><br>
+      <span class="description2"><%= @event.description %></span><br>
     </p>
 
     <p class="event-venue">
-      <%= @event.venue.address %>
+      📍<%= @event.venue.address %>
     </p>
   </div>
 </div>
@@ -29,12 +29,9 @@
 
 
 <ul class="show-links">
-<li>
-<strong><%= link_to "Back to Events ➶", events_path, class: "show-link" %></strong>
+<li><strong><%= link_to "#{@event.comedian.user_name}´s Profile ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
-<li><strong><%= link_to "#{@event.comedian.user_name} ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
-</li>
-<li><strong><%= link_to "#{@event.venue.user_name} ➶", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
+<li><strong><%= link_to "Visit #{@event.venue.user_name}´s Profile ➶", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
 </ul>
 
@@ -42,7 +39,7 @@
   <div data-controller="interest"> <%# call Stimulus %>
 
 <div class="event-attendance">
-  <p>🤩 <span data-interest-target="count"><%= @event.interests.count %></span> Joining</p> <%# "data-interest-target="count"" make JS to be able to access with "this.countTarget" %>
+  <p><i class="emoji fa-regular fa-face-smile-beam"></i> <span data-interest-target="count"><%= @event.interests.count %></span> Joining</p> <%# "data-interest-target="count"" make JS to be able to access with "this.countTarget" %>
 </div>
 
   <div class="going-button mb-3">
@@ -119,4 +116,5 @@
     </div>
   </div>
 </div>
+<strong><%= link_to "Back to Events ➶", events_path, class: "show-link" %></strong>
 </div>
