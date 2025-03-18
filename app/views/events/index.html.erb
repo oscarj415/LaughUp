@@ -8,11 +8,11 @@
   <div class="items">
   <div class=comedian-img>
 <%= link_to event_path(event), class: "img-a" do %>
-  <%= image_tag "justin_small.png"%>
+  <%= cl_image_tag event.comedian.photo.key if event.comedian.photo.attached? %>
   </div>
 
   <div class=info-text>
-  <strong><%= event.comedian.user_name %></strong><br><br>
+  <strong><%= event.comedian.user_name %></strong><%= event.title %><br><br>
         <%= event.date_time.strftime("%A, %d.%m") %><br>
         <%= event.date_time.strftime("%H.%M UHR") %><br><br>
         <%= event.venue.user_name %><br>
