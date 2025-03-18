@@ -3,7 +3,7 @@
 <% if @user.user_type == "comedian" %>
 
   <h1 class="comedian-name">  <%= @user.user_name %> </h1>
-  <%= image_tag "justin_small.png", class: "comedian-pic"%>
+  <%= cl_image_tag @user.photo.key, class: "comedian-pic" if @user.photo.attached? %>
   <h3 class="mt-2">Reviews </h3>
   <p class="review"><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
