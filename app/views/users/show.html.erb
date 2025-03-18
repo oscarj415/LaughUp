@@ -54,7 +54,9 @@
     </a>
   </div>
 
-
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
+  <% end %>
   <%= link_to "➶ Back to the event", :back, class: "show-link" %>
 
 
@@ -102,7 +104,9 @@
 <% end %>
 </p>
 
-
+ <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
+  <% end %>
   <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>    </li>
 
 
