@@ -281,6 +281,18 @@ h4{
   }
 }
 
+.reset {
+  font-size: 2rem;
+  color: $yellow;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $purple;
+    color: red;
+
+  }
+}
+
 
 .back-btn-container{
   text-align: center;
