@@ -12,7 +12,6 @@
     </p>
 
     <p class="event-venue">
-      <%= @event.venue.user_name %><br>
       <%= @event.venue.address %>
     </p>
   </div>
@@ -23,8 +22,7 @@
         style="width: 363px; height: 149px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
 
