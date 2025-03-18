@@ -1,8 +1,10 @@
 <div class="VC-container">
+
 <% if @user.user_type == "comedian" %>
 
   <h1 class="comedian-name">  <%= @user.user_name %> </h1>
   <%= image_tag "justin_small.png", class: "comedian-pic"%>
+  <h3 class="mt-2">Reviews </h3>
   <p class="review"><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
     <div class="review-card">
@@ -53,7 +55,7 @@
   </div>
 
 
-  <%= link_to "➶ Back to an event", :back, class: "show-link" %>
+  <%= link_to "➶ Back to the event", :back, class: "show-link" %>
 
 
 
@@ -73,8 +75,7 @@
     style="width: 364px; height: 329px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
 
@@ -84,9 +85,7 @@
   <% end %></p>
 
 
-<h3>Reviews about </h3>
-<p class="review-about"><%= @user.user_name %></p>
-
+<h3>Reviews </h3>
 
 <p class="review"> <% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
@@ -102,7 +101,7 @@
 </p>
 
 
-  <strong><%= link_to "➶ Back to an event", :back,  class: "show-link" %></strong>    </li>
+  <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>    </li>
 
 
 <%# Write all venue related code above this line %>
