@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index_comedians, :index_venues, :show]
+  before_action :set_user, only: [:edit]
 
   def index_venues
     @venues = User.venue
@@ -32,6 +33,9 @@ class UsersController < ApplicationController
     # @events = @user.events_as_comedian
     # @events = @user.events_as_venue
     # @previous_event = Event.find(params[:previous_event_id])
+  end
+
+  def edit
   end
 
   private

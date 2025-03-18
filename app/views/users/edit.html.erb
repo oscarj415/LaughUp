@@ -1,2 +1,12 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+
+ <div class="comedian-user d-none" data-user-type-target="comedian">
+      <h4>Comedian Info</h4>
+      <%= f.input :description, label: "Bio / Description", required: true %>
+      <%= f.input :insta_handle, label: "Instagram" %>
+      <%= f.input :tiktok_handle, label: "TikTok" %>
+      <%= f.input :facebook_handle, label: "Facebook" %>
+      <%= f.input :X_handle, label: "X (Twitter)" %>
+      <%= f.input :youtube_handle, label: "YouTube" %>
+    </div>
