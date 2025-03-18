@@ -1,11 +1,10 @@
-
 .social-links{
   gap: 50px;
   margin-top: 10px;
   font-size: 30px;
 
   i{
-    color: #000;
+    color: $yellow
   }
 
   }
@@ -13,23 +12,19 @@
   .authors {
     text-decoration: none;
     gap: 40px;
+    margin-bottom: 10px;
 
       a{
       text-decoration: none;
-      color: #000;
+      color: $yellow
       }
 
 }
 
-.footer-line{
-  border-top: 1px solid $purple;
-  margin-top: 30px;
-  font-family: Nunito;
-
-  p{
-    margin-top: 10px;
-    text-align: center;
-  }
+.footer-info{
+color: $yellow;
+margin-bottom: 5px;
+text-decoration: none;
 }
 
 .footer-div {
@@ -38,4 +33,26 @@
   align-items: center;
   width: 100%;
   padding: 0 1rem;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.footer-container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+.footer-line {
+  border-top: 1px solid $yellow;
+  font-family: Nunito;
+  p {
+
+    text-align: center;
+  }
 }
