@@ -28,18 +28,18 @@
 </div>
 
 
-<ul>
+<ul class="show-links">
 <li>
 <strong><%= link_to "Back to Events ➶", events_path, class: "show-link" %></strong>
 </li>
-<li><strong><%= link_to "#{@event.comedian.user_name} ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong></li>
-
+<li><strong><%= link_to "#{@event.comedian.user_name} ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
+</li>
 <li><strong><%= link_to "#{@event.venue.user_name} ➶", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
 </ul>
 
 
- <div data-controller="interest"> <%# call Stimulus %>
+  <div data-controller="interest"> <%# call Stimulus %>
 
 <div class="event-attendance">
   <p>🤩 <span data-interest-target="count"><%= @event.interests.count %></span> Joining</p> <%# "data-interest-target="count"" make JS to be able to access with "this.countTarget" %>

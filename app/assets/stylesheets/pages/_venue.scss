@@ -24,12 +24,17 @@
   overflow: hidden;
 }
 
-.past {
-  color: black
+.venue-title{
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .venue-title, .past {
   margin-top: 10px;
+}
+
+.review-about{
+  font-size: large;
 }
 
 .description{
