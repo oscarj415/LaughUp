@@ -80,6 +80,7 @@
 </p>
 
   <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Create an event", new_event_path, class: "edit-link" %>
     <%= link_to "Edit Profile", edit_user_registration_path, class: "edit-link" %>
   <% end %>
 
@@ -157,9 +158,11 @@
 <br>
 
   <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Create an event", new_event_path, class: "edit-link" %>
     <%= link_to "Edit Profile", edit_user_registration_path, class: "edit-link" %>
   <% end %>
 <br>
+
 
 <% if params[:previous_event_id] %>
   <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>

@@ -1,2 +1,52 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Create a New Event</h1>
+
+<%= simple_form_for @event do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Event Title" %>
+    <%= f.input :title, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Event Description" %>
+    <%= f.input :description, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_time, "Event Date & Time" %>
+    <%= f.input :date_time, as: :string, required: true, input_html: { type: 'datetime-local' } %>
+  </div>
+
+  <% if current_user.comedian? %>
+       <%= f.hidden_field :comedian_id, value: current_user.id %>
+
+  <div class="form-group">
+      <%= f.label :comedian_id, "Your Comedian ID: #{current_user.id}" %>
+      <%= f.text_field :comedian_id, value: current_user.id, readonly: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :venue_id, "Enter Venue ID" %>
+      <%= f.input :venue_id, as: :string, required: true %>
+    </div>
+
+
+  <% elsif current_user.venue? %>
+  <%= f.label :venue_id, "Your Venue ID: #{current_user.id}" %>
+    <%= f.hidden_field :venue_id, value: current_user.id %>
+
+  <div class="form-group">
+      <%= f.label :venue_id, "Your Venue ID" %>
+      <%= f.text_field :venue_id, value: current_user.id, readonly: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :comedian_id, "Enter Comedian ID" %>
+      <%= f.input :comedian_id, as: :string, required: true %>
+    </div>
+
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "Create Event", class: "btn btn-primary" %>
+  </div>
+<% end %>
