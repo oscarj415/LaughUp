@@ -73,33 +73,39 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(events_params)
+    if current_user.comedian?
+      @event.comedian = current_user
+    elsif current_user.venue?
+      @event.venue = current_user
+    end
+
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: "Event created successfully."
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-  # def venue_index
-  #   redirect_to home_path unless current_user.comedian?
-  # end
-
 
   def edit
     set_event
   end
 
   def update
-    if @event.update(events_params)
-      redirect_to events_path(@event)
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: "Event updated successfully."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def delete
-    @event.destroy
+  def destroy
+    if @event.comedian == current_user || @event.venue == current_user
+      @event.destroy
+      redirect_to events_path, notice: "Event deleted successfully."
+    else
+      redirect_to events_path, alert: "You are not authorized to delete this event."
+    end
   end
 
   private
@@ -109,6 +115,6 @@ class EventsController < ApplicationController
   end
 
   def events_params
-    params.require(:event).permit(:xxx, :yyy)
+    params.require(:event).permit(:title, :description, :date_time, :comedian_id, :venue_id)
   end
 end
