@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "pages#home"
+  get "about", to: "pages#about"
 
   resources :events do
     resources :interests, only: [:create]
