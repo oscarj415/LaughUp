@@ -4,31 +4,11 @@
 
   <h1 class="comedian-name">  <%= @user.user_name %> </h1>
   <%= cl_image_tag @user.photo.key, class: "comedian-pic" if @user.photo.attached? %>
-  <h3 class="mt-2">Reviews </h3>
-  <p class="review"><% if @user.received_reviews.any? %>
-  <% @user.received_reviews.each do |review| %>
-    <div class="review-card">
-      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
-      <p><strong>Comment:</strong> <%= review.content %></p>
-      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
-    </div>
-  <% end %>
-<% else %>
-  <p class="review">No reviews yet.</p>
-<% end %>
-</p>
 
-  <p class="description"><%= @user.description %></p>
 
-<h3>Past Events</h3>
-  <ul class="event-list"> <% @user.events_as_comedian.each do |event| %>
-  <li>
-<%= event.title %>
-  </li>
-  <% end %></p>
-  </ul>
-
-    <div class="social-links d-flex justify-content-center mb-3">
+<p class="description"><%= @user.description %>
+    <div class="follow"> Follow <%= @user.user_name %> on: </div>
+    <div class="com-social-links d-flex justify-content-center mb-3">
     <a
       href="https://www.youtube.com/"
       target="_blank"
@@ -53,45 +33,40 @@
       <i class="fa-brands fa-tiktok"></i>
     </a>
   </div>
-
-  <% if user_signed_in? && current_user == @user %>
-    <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
-  <% end %>
-  <%= link_to "➶ Back to the event", :back, class: "show-link" %>
-
-
-
-
-<%# Write all comedian related code above this line %>
-<% elsif @user.user_type == "venue" %>
-<h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
-<%= cl_image_tag @user.photo.key, class: "venue-pic" if @user.photo.attached? %>
-  <p class="description">
-  here will be a Venue Description
-  <%= @user.description %>
-
   </p>
 
-<div class="map">
-<div class="event-map"
-        style="width: 360px; height: 500px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        data-action="click->map#resize">
+  <h3>Past Events</h3>
+
+<%# >>>>>>>>>>>>>>>>>>carousel for comedian past events start>>>>>>>>>>>>> %>
+<div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% @user.events_as_comedian.each_with_index do |event, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <div class="card" style="width: 18rem; border-radius: 20px;">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.description.truncate(100) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
-</div>
+
+<%# <<<<<<<<<<<<<<<<<<<<<carouser for comedian past events finish>>>>>>>>>>>>>>>>>>>>> %>
 
 
-  <h3 class="past"> Past events </h3>
-  <p class="event-list"><% @user.events_as_venue.each do |event| %>
-  <%= event.title %>
-  <% end %></p>
 
-
-<h3>Reviews </h3>
-
-<p class="review"> <% if @user.received_reviews.any? %>
+  <h3 class="mt-2">Reviews </h3>
+  <p class="review"><% if @user.received_reviews.any? %>
   <% @user.received_reviews.each do |review| %>
     <div class="review-card">
       <p><strong>Rating:</strong> <%= review.rating %> ★</p>
@@ -104,20 +79,93 @@
 <% end %>
 </p>
 
- <% if user_signed_in? && current_user == @user %>
+
+
+  <% if user_signed_in? && current_user == @user %>
     <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
   <% end %>
+  <%= link_to "➶ Back to the event", :back, class: "show-link" %>
+<br>
+<br>
+
+
+
+<% elsif @user.user_type == "venue" %>
+<h1 class="venue-title">Welcome to <%= @user.user_name %></h1>
+<%= cl_image_tag @user.photo.key, class: "venue-pic" if @user.photo.attached? %>
+  <p class="description">
+  <%= @user.description %>
+  </p>
+<%# >>>>>>>>>>>>>>>Carousel for venue past events start>>>>>>>>>>>>>>>> %>
+
+<h3 class="past">Past Events</h3>
+<div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% @user.events_as_venue.each_with_index do |event, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.description.truncate(100) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<%# >>>>>>>>>>>>>>>Carousel for venue past events end>>>>>>>>>>>>>>>>>>>>>>> %>
+<br>
+<h3>Reviews </h3>
+
+<p class="review"> <% if @user.received_reviews.any? %>
+  <% @user.received_reviews.each do |review| %>
+    <div class="review-card">
+      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
+      <p><strong>Comment:</strong> <%= review.content %></p>
+      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
+    </div>
+  <% end %>
+<% else %>
+  No reviews yet
+<% end %>
+</p>
+
+<br>
+<div class="map">
+<div class="event-map"
+        style="width: 360px; height: 500px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-action="click->map#resize">
+</div>
+</div>
+<br>
+<br>
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
+  <% end %>
+
+
   <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>    </li>
-
-
+<br>
 <%# Write all venue related code above this line %>
 <% else %>
   <h2>Standard User Profile</h2>
   <p>Welcome, <%= @user.name %>!</p>
     <p><%= @user.description %></p>
 
-  <strong><%= link_to "Back", :back, class: "text-decoration-none", style: "color: black;" %></strong>    </li>
-
+  <strong><%= link_to "Back", :back, class: "show-link" %></strong>    </li>
 
 <% end %>
+<br>
 </div>

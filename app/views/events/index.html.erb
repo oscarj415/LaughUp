@@ -1,7 +1,6 @@
-<div class="gallery">
-<br>
+<div class="gallery-index">
   <div class="head-text">
-<h4>Upcoming Events:</h4>
+<h1 class="all-events-title">Upcoming Events:</h1>
 </div>
 
 <% @events.each do |event| %>
@@ -12,15 +11,23 @@
   </div>
 
   <div class=info-text>
-  <strong><%= event.comedian.user_name %></strong><%= event.title %><br><br>
+        <h4 class="event-name">
+        <%= event.title %> with
+        <%= event.comedian.user_name %>
+        </h4>
+        <br>
+        <span class="when"> 📆
         <%= event.date_time.strftime("%A, %d.%m") %><br>
         <%= event.date_time.strftime("%H.%M UHR") %><br><br>
-        <%= event.venue.user_name %><br>
-        <%= event.venue.address %>
+        </span>
+        <span class="event-venue-name"> at <%= event.venue.user_name %></span><br>
+        <span class="event-venue-address">📍 <%= event.venue.address %></span>
   </div>
   </div>
   <% end %>
 <% end %>
+<br>
+<br>
 </div>
 
 <div class="map-container">
@@ -70,11 +77,4 @@ Show Map
 
 <div class="filter-btn">
 <i class="fa-solid fa-sliders"></i>
-</div>
-
-
-  <%# till here _______________________ %>
-
-<div class="back-btn-container">
-  <%= link_to "Home", root_path, class: "back-btn" %>
 </div>

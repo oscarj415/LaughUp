@@ -13,6 +13,8 @@
 .comedian-name{
   font-size: 2.5rem;
   font-weight: bold;
+  margin-bottom: 5px;
+
 }
 
 .comedian-pic{
@@ -32,7 +34,7 @@
   font-size: 1rem;
 }
 
-.description{
+.description, .follow{
   font-family: Nunito;
   text-align: center;
   margin-top: 1rem;
@@ -62,3 +64,14 @@ h3{
   .show-link:hover{
     text-decoration: underline;
   }
+
+  .com-social-links{
+    gap: 50px;
+    margin-top: 10px;
+    font-size: 30px;
+
+    i{
+      color: black;
+    }
+
+    }
