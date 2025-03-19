@@ -20,10 +20,10 @@
         </h4>
         <br>
         <span class="when"> 📆
-        <%= event.date_time.strftime("%A, %d.%m") %><br>
-        <%= event.date_time.strftime("%H.%M UHR") %><br><br>
+        <%= event.date_time.strftime("%A, %d.%m") %>
+        <%= event.date_time.strftime("%H.%M UHR") %>
         </span>
-        <span class="event-venue-name"> at <%= event.venue.user_name %></span><br>
+        <span class="event-venue-name"> at <%= event.venue.user_name %></span>
         <span class="event-venue-address">📍 <%= event.venue.address %></span>
   </div>
   </div>
