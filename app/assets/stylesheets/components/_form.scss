@@ -8,14 +8,23 @@
 .form-inputs input,
 .form-inputs select,
 .form-inputs textarea {
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 10px;
   background: none;
+  padding: 1rem;
   font-size: 1.5rem;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid $purple;
   margin-bottom: 10px;
   background: rgb(249, 246, 227);
+}
+
+.form-check,
+.form-check-input {
+  margin-left: 0.75rem;
+}
+
+.form-check-label.boolean.optional {
+  padding-top: 0.70rem;
 }
 
 .form-action-container{
@@ -25,15 +34,23 @@
 
 .form-actions .button{
   font-size: 2rem;
-  height: 70px;
-  width: 150px;
-  outline: 4px solid $purple;
+  height: 60px;
+  width: 125px;
+  outline: 1px solid $purple;
   color: $purple;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all ease-in-out 250ms;
+
+  &:hover {
+    color: $yellow;
+    background-color: $purple;
+  }
 }
 
 .render-links a {
+  position: relative;
   color: $purple;
-
+  margin-left: 1rem;
+  top: 3.5rem;
 }
