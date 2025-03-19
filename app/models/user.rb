@@ -16,6 +16,9 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  scope :with_coordinates, -> { where.not(latitude: nil, longitude: nil) }
+
   # All users
   validates :user_name, presence: true
   validates :user_type, presence: true
