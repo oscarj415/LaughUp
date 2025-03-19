@@ -34,16 +34,16 @@
   transform: translateY(0); // moved down when its active
 }
 
-.navbar-nav{
-  height: 100vh;
-  padding-left: 20px;
-  margin-top: 110px;
-  margin-bottom: 30px;
-}
+// .navbar-nav{
+//   height: 100vh;
+//   padding-left: 20px;
+//   // margin-top: 110px;
+//   margin-bottom: 30px;
+// }
 
-.nav-item {
-  display: inline;
-}
+// .nav-item {
+//   display: inline;
+// }
 
 .nav-link{
   font-family: 'BM-HANNA', sans-serif;
@@ -75,7 +75,6 @@
   padding-right: 1rem;
 
 }
-
 
 .navbar-toggler:focus {
   outline: none;
@@ -110,4 +109,19 @@
 
 .line{
   border-bottom: 4px solid $purple;
+}
+
+
+.navbar-wrapper {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.navbar-content {
+  width: 100%;
+  max-width: 600px;
 }

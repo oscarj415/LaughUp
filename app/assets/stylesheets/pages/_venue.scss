@@ -41,3 +41,30 @@
   font-family: Nunito;
   margin-bottom: 0.5rem;
 }
+
+.carousel-inner {
+  padding: 10px;
+}
+
+
+.card {
+  border-radius: 20px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: $yellow;
+  border: 0;
+}
+
+.card-body {
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: black;
+
+}

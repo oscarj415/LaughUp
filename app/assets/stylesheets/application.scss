@@ -196,7 +196,7 @@ button {
   right: 1rem;
   font-size: 10rem;
   cursor: pointer;
-  color: $black;
+  color: $purple;
   height: 50px;
   width: 50px;
   display: flex;
@@ -207,7 +207,7 @@ button {
   z-index: 1100;
 }
 
-.gallery {
+.gallery-index{
   position: relative;
   margin: 10px;
   min-height: 100vh;
@@ -218,15 +218,16 @@ button {
   gap: 1rem;
 }
 
-h4{
+.all-events-title{
   font-size: 2rem;
   font-family: 'BM-HANNA', sans-serif;
 }
 
 .items {
   display: flex;
-  width: calc(100% - 1rem);
-  min-height: 250px;
+  width: 90vw;
+  max-width: 500px;
+  height: 250px;
   outline: 4px solid $purple;
   border-radius: 10px;
   align-items: stretch;
@@ -241,15 +242,16 @@ h4{
 
 .comedian-img {
   flex: 1.2;
+  display: flex;
   min-width: 40%;
   max-width: 40%;
-  display: flex;
-
+  height: 100%;
 
   img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
   }
 }
 
@@ -260,6 +262,25 @@ h4{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.event-name {
+  text-align: center;
+  font-family: BM-HANNA;
+}
+
+.event-venue-name {
+  text-align: center;
+  font-family: BM-HANNA;
+}
+
+.event-venue-address{
+  font-family: Nunito;
+  font-size: 1rem;
+}
+
+.when{
+  font-family: Nunito;
 }
 
 .link{
@@ -293,42 +314,26 @@ h4{
   }
 }
 
-
-.back-btn-container{
-  text-align: center;
-  padding: 30px;
+.map {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  width: 360px;
+  height: 150px;
+  overflow: hidden;
 }
 
-.back-btn {
-  height: auto;
-  width: 100%;
+// landing page
+
+.gallery-home {
+  position: relative;
+  margin: 10px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  border: 1px solid black;
-  color: black;
-  font-size: 2rem;
-  line-height: 1.5em;
-  border-radius: 20px;
-  padding: 0.75rem;
-  cursor: pointer;
-  transition: 250ms ease-out;
-  text-decoration: none;
-
-  &:hover{
-    color: $yellow;
-    background-color: black;
-  }
-}
-
-@media (min-width: 600px) {
-  .gallery {
-    justify-content: center;
-    align-items: center;
-  }
-
-  .items {
-    width: 500px;
-    min-height: 250px;
-  }
+  gap: 1rem;
 }
 
 video {
@@ -340,11 +345,37 @@ video {
   object-fit: cover;
 }
 
-.map {
-  display: flex;
-  flex-direction: center;
-  justify-content: center;
-  width: 360px;
-  height: 150px;
-  overflow: hidden;
-}
+
+
+// removed from index.html we don't need this button there
+
+// <div class="back-btn-container">
+//   <%= link_to "Home", root_path, class: "back-btn" %>
+// </div>
+
+// Css for back-button
+
+// .back-btn-container{
+//   text-align: center;
+//   padding: 30px;
+// }
+
+// .back-btn {
+//   height: auto;
+//   width: 100%;
+//   align-items: center;
+//   border: 1px solid black;
+//   color: black;
+//   font-size: 2rem;
+//   line-height: 1.5em;
+//   border-radius: 20px;
+//   padding: 0.75rem;
+//   cursor: pointer;
+//   transition: 250ms ease-out;
+//   text-decoration: none;
+
+//   &:hover{
+//     color: $yellow;
+//     background-color: black;
+//   }
+// }

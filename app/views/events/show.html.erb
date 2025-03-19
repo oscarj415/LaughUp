@@ -1,20 +1,25 @@
 <div class="show-container">
 
-
 <div class="event-info">
-  <h1 class="event-title"><%= @event.title %></h1><br>
+  <h1 class="event-title"><%= @event.title %></h1>
+  <br>
 
   <div class="event-details">
-    <p class="event-date-time">
-      <%= @event.date_time.strftime("%A, %d.%m") %>
-      <%= @event.date_time.strftime("%H:%M") %><br>
-      <span class="description2"><%= @event.description %></span><br>
+    <p class="description2">
+      <%= @event.description %>
     </p>
 
+    <h2 class="event-date-time">
+      <%= @event.date_time.strftime("%A, %d.%m") %>
+      <%= @event.date_time.strftime("%H:%M") %>
+    </h2>
+
+
+  </div>
     <p class="event-venue">
       📍<%= @event.venue.address %>
     </p>
-  </div>
+
 </div>
 
 <div class="map">
@@ -29,9 +34,9 @@
 
 
 <ul class="show-links">
-<li><strong><%= link_to "#{@event.comedian.user_name}´s Profile ➶", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
+<li><strong><%= link_to "➶ #{@event.comedian.user_name}´s Profile", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
-<li><strong><%= link_to "Visit #{@event.venue.user_name}´s Profile ➶", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
+<li><strong><%= link_to "➶ Visit #{@event.venue.user_name}´s Profile", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
 </li>
 </ul>
 
@@ -116,5 +121,8 @@
     </div>
   </div>
 </div>
-<strong><%= link_to "Back to Events ➶", events_path, class: "show-link" %></strong>
+<br>
+<strong><%= link_to "➶ Back to all Events", events_path, class: "show-link" %></strong>
+<br>
+<br>
 </div>
