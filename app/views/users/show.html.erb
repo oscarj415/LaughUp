@@ -84,7 +84,11 @@
   <% if user_signed_in? && current_user == @user %>
     <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
   <% end %>
-  <%= link_to "➶ Back to the event", :back, class: "show-link" %>
+
+<% if params[:previous_event_id] %>
+  <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>
+<br>
+<% end %>
 <br>
 <br>
 
@@ -156,16 +160,18 @@
     <%= link_to "Edit", edit_user_registration_path, class: "edit-link" %>
   <% end %>
 
-
-  <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>    </li>
+<% if params[:previous_event_id] %>
+  <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>
 <br>
+<% end %>
+
 <%# Write all venue related code above this line %>
 <% else %>
   <h2>Standard User Profile</h2>
   <p>Welcome, <%= @user.name %>!</p>
     <p><%= @user.description %></p>
 
-  <strong><%= link_to "Back", :back, class: "show-link" %></strong>    </li>
+  <strong><%= link_to "Back", :back, class: "show-link" %></strong>
 
 <% end %>
 <br>
