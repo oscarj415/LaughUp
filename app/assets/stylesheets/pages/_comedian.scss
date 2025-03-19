@@ -45,12 +45,18 @@ h3{
   font-family: BM-HANNA;
 }
 
-.event-list{
+.event-list {
   font-family: nunito;
   font-size: 1rem;
   list-style-type: none;
   text-align: center;
   padding: 0px;
+
+.event-link {
+  text-decoration: none;
+  color: black;
+}
+
 }
 
 .show-link{

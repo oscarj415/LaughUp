@@ -35,49 +35,62 @@
   </div>
   </p>
 
-  <h3>Past Events</h3>
+<h3>Past Events</h3>
 
-<%# >>>>>>>>>>>>>>>>>>carousel for comedian past events start>>>>>>>>>>>>> %>
-<div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+<ul class="event-list">
+  <% @user.events_as_comedian.each do |event| %>
+    <li>
+      ☞ <%= link_to event.title, event_path(event), class: "event-link" %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+  <h3 class="mt-2">Reviews </h3>
+<%# >>>>>>>>>>>>>>>>>>carousel for comedian rating start>>>>>>>>>>>>> %>
+
+<div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <% @user.events_as_comedian.each_with_index do |event, index| %>
+    <% @user.received_reviews.each_with_index do |review, index| %>
       <div class="carousel-item <%= 'active' if index == 0 %>">
         <div class="card" style="width: 18rem; border-radius: 20px;">
           <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <p class="card-text"><%= event.description.truncate(100) %></p>
+            <p class="rating"><strong>Rating:</strong> <%= review.rating %> ★</p>
+            <p class="comment"><strong>Comment:</strong> <%= review.content %></p>
+            <p class="event"><small>Event:  <%= link_to review.event.title, event_path(review.event), class: "event-a" %></small></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @user.received_reviews.empty? %>
+      <div class="carousel-item active">
+        <div class="card" style="width: 18rem; border-radius: 20px;">
+          <div class="card-body">
+            <p>No reviews yet.</p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
 
-<%# <<<<<<<<<<<<<<<<<<<<<carousel for comedian past events finish>>>>>>>>>>>>>>>>>>>>> %>
 
 
+<%# <<<<<<<<<<<<<<<<<<<<<carousel for comedian ratings finish>>>>>>>>>>>>>>>>>>>>> %>
 
-  <h3 class="mt-2">Reviews </h3>
-  <p class="review"><% if @user.received_reviews.any? %>
-  <% @user.received_reviews.each do |review| %>
-    <div class="review-card">
-      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
-      <p><strong>Comment:</strong> <%= review.content %></p>
-      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
-    </div>
-  <% end %>
-<% else %>
-  <p class="review">No reviews yet.</p>
-<% end %>
-</p>
 
   <% if user_signed_in? && current_user == @user %>
     <%= link_to "Create an event", new_event_path, class: "edit-link" %>
@@ -85,7 +98,7 @@
   <% end %>
 
   <br>
-  
+
 
 <% if params[:previous_event_id] %>
   <strong><%= link_to "➶ Back to the event", :back,  class: "show-link" %></strong>
@@ -100,49 +113,62 @@
   <p class="description">
   <%= @user.description %>
   </p>
-<%# >>>>>>>>>>>>>>>Carousel for venue past events start>>>>>>>>>>>>>>>> %>
 
-<h3 class="past">Past Events</h3>
-<div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+
+
+  <h3 class="past"> Past events </h3>
+  <ul class="event-list">
+  <% @user.events_as_venue.each do |event| %>
+    <li>
+      ☞ <%= link_to event.title, event_path(event), class: "event-link" %>
+    </li>
+  <% end %>
+</ul>
+
+
+<br>
+<h3>Reviews </h3>
+
+<%# >>>>>>>>>>>>>>>Carousel for venue ratings start>>>>>>>>>>>>>>>> %>
+
+<div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <% @user.events_as_venue.each_with_index do |event, index| %>
+    <% @user.received_reviews.each_with_index do |review, index| %>
       <div class="carousel-item <%= 'active' if index == 0 %>">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; border-radius: 20px;">
           <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <p class="card-text"><%= event.description.truncate(100) %></p>
+            <p class="rating"><strong>Rating:</strong> <%= review.rating %> ★</p>
+            <p class="comment"><strong>Comment:</strong> <%= review.content %></p>
+            <p class="event"><small>Event:  <%= link_to review.event.title, event_path(review.event), class: "event-a" %></small></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @user.received_reviews.empty? %>
+      <div class="carousel-item active">
+        <div class="card" style="width: 18rem; border-radius: 20px;">
+          <div class="card-body">
+            <p>No reviews yet.</p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
 
-<%# >>>>>>>>>>>>>>>Carousel for venue past events end>>>>>>>>>>>>>>>>>>>>>>> %>
-<br>
-<h3>Reviews </h3>
 
-<p class="review"> <% if @user.received_reviews.any? %>
-  <% @user.received_reviews.each do |review| %>
-    <div class="review-card">
-      <p><strong>Rating:</strong> <%= review.rating %> ★</p>
-      <p><strong>Comment:</strong> <%= review.content %></p>
-      <p><small>Event: <%= link_to review.event.title, event_path(review.event) %></small></p>
-    </div>
-  <% end %>
-<% else %>
-  No reviews yet
-<% end %>
-</p>
-
+<%# >>>>>>>>>>>>>>>Carousel for venue rating end>>>>>>>>>>>>>>>>>>>>>>> %>
 <br>
 <div class="map">
 <div class="event-map"
