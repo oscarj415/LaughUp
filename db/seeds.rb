@@ -16,6 +16,8 @@ User.destroy_all
 end
 puts "Created 5 fan users."
 
+
+
 # -------------------
 # Comedians
 # -------------------
@@ -592,5 +594,104 @@ comedian14 = User.find_by(user_name: "Claire", user_type: :comedian)
     else
       puts "Comedian Kat not found."
 end
+
+
+# -------------------
+# Comedian Reviews
+# -------------------
+
+puts "Seeding reviews..."
+
+reviews_content = [
+  { content: "Absolutely hilarious! I haven't laughed this hard in years. The comedian had perfect timing and a great connection with the audience.", rating: 5 },
+  { content: "Decent performance, but I expected more originality. Some jokes felt a bit outdated.", rating: 3 },
+  { content: "The show was okay, but the comedian seemed unprepared. A few awkward pauses and some jokes fell flat.", rating: 2 },
+  { content: "Incredible night! The entire crowd was in tears from laughter. Definitely coming back for more.", rating: 5 },
+  { content: "Not my cup of tea. I prefer more intelligent humor, and this felt a bit too crude for my taste.", rating: 2 },
+  { content: "Brilliant set! The comedian's ability to improvise and interact with the audience was top-tier.", rating: 5 },
+  { content: "It was an average show. Some parts were funny, but overall, it didn't leave a lasting impression.", rating: 3 },
+  { content: "Completely unprofessional! The comedian was late, and the jokes felt rushed. Very disappointing.", rating: 1 },
+  { content: "Loved it! The storytelling was engaging, and I related to so many of the jokes.", rating: 5 },
+  { content: "One of the worst comedy shows I’ve attended. Jokes were repetitive and lacked creativity.", rating: 1 },
+  { content: "An absolute riot! The crowd was engaged the entire time, and the energy was fantastic.", rating: 5 },
+  { content: "Cringeworthy at times. The comedian relied too much on shock humor rather than clever writing.", rating: 2 },
+  { content: "A must-see! If you enjoy sharp wit and observational humor, this is for you.", rating: 5 },
+  { content: "The jokes were good, but the delivery felt off. Maybe just an off night for the comedian.", rating: 3 },
+  { content: "So much fun! I left with my stomach hurting from laughing so much.", rating: 5 },
+  { content: "Offensive and not in a funny way. There's a fine line between edgy and just plain bad taste.", rating: 1 },
+  { content: "The best comedy show I've ever been to! Absolutely worth every penny.", rating: 5 },
+  { content: "Boring. The jokes felt recycled, and the comedian didn’t engage much with the audience.", rating: 2 },
+  { content: "What a talent! This comedian is going to be huge someday, no doubt about it.", rating: 5 },
+  { content: "Mediocre at best. A few chuckles here and there, but nothing memorable.", rating: 3 }
+]
+
+90.times do
+  reviewer = User.fan.sample
+  event = Event.all.sample
+  reviewed_user = User.comedian.sample
+  review = reviews_content.sample
+
+  Review.create!(
+    user_id: reviewer.id,
+    event_id: event.id,
+    rating: review[:rating], # Matching rating from the review content
+    content: review[:content], # Review text
+    reviewed_id: reviewed_user.id,
+    user_type: rand(0..1), # Adjust based on your user type logic
+    created_at: Time.now,
+    updated_at: Time.now
+  )
+end
+
+puts "✅ Successfully seeded 20 comedian reviews!"
+
+# -------------------
+# Venue Reviews
+# -------------------
+
+puts "Seeding reviews..."
+
+reviews_content = [
+  { content: "Absolutely hilarious! I haven't laughed this hard in years. The comedian had perfect timing and a great connection with the audience.", rating: 5 },
+  { content: "Decent performance, but I expected more originality. Some jokes felt a bit outdated.", rating: 3 },
+  { content: "The show was okay, but the comedian seemed unprepared. A few awkward pauses and some jokes fell flat.", rating: 2 },
+  { content: "Incredible night! The entire crowd was in tears from laughter. Definitely coming back for more.", rating: 5 },
+  { content: "Not my cup of tea. I prefer more intelligent humor, and this felt a bit too crude for my taste.", rating: 2 },
+  { content: "Brilliant set! The comedian's ability to improvise and interact with the audience was top-tier.", rating: 5 },
+  { content: "It was an average show. Some parts were funny, but overall, it didn't leave a lasting impression.", rating: 3 },
+  { content: "Completely unprofessional! The comedian was late, and the jokes felt rushed. Very disappointing.", rating: 1 },
+  { content: "Loved it! The storytelling was engaging, and I related to so many of the jokes.", rating: 5 },
+  { content: "One of the worst comedy shows I’ve attended. Jokes were repetitive and lacked creativity.", rating: 1 },
+  { content: "An absolute riot! The crowd was engaged the entire time, and the energy was fantastic.", rating: 5 },
+  { content: "Cringeworthy at times. The comedian relied too much on shock humor rather than clever writing.", rating: 2 },
+  { content: "A must-see! If you enjoy sharp wit and observational humor, this is for you.", rating: 5 },
+  { content: "The jokes were good, but the delivery felt off. Maybe just an off night for the comedian.", rating: 3 },
+  { content: "So much fun! I left with my stomach hurting from laughing so much.", rating: 5 },
+  { content: "Offensive and not in a funny way. There's a fine line between edgy and just plain bad taste.", rating: 1 },
+  { content: "The best comedy show I've ever been to! Absolutely worth every penny.", rating: 5 },
+  { content: "Boring. The jokes felt recycled, and the comedian didn’t engage much with the audience.", rating: 2 },
+  { content: "What a talent! This comedian is going to be huge someday, no doubt about it.", rating: 5 },
+  { content: "Mediocre at best. A few chuckles here and there, but nothing memorable.", rating: 3 }
+]
+
+90.times do
+  reviewer = User.fan.sample
+  event = Event.all.sample
+  reviewed_user = User.venue.sample
+  review = reviews_content.sample
+
+  Review.create!(
+    user_id: reviewer.id,
+    event_id: event.id,
+    rating: review[:rating], # Matching rating from the review content
+    content: review[:content], # Review text
+    reviewed_id: reviewed_user.id,
+    user_type: rand(0..1), # Adjust based on your user type logic
+    created_at: Time.now,
+    updated_at: Time.now
+  )
+end
+
+puts "✅ Successfully seeded 20 venue reviews!"
 
 puts "Seeding completed!"
