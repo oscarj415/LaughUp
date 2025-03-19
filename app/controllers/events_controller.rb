@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @events = Event.all
+    @events = Event.where("date_time >= ?", Date.today + 2).order(date_time: :asc)
+    @past_events = Event.where("date_time < ?", Date.today).order(date_time: :asc)
     @venues = User.venue
 
     # The `geocoded` scope filters only flats with coordinates
