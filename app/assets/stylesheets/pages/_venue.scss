@@ -46,28 +46,52 @@
   padding: 10px;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1 !important;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1 !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background: none !important;
+  border: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(92%) saturate(500%) hue-rotate(270deg) brightness(103%) contrast(102%);
+  // background: none !important;
+}
 
 .card {
   border-radius: 20px !important;
   border: 1px solid $purple !important;
   // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background: $yellow;
+  // background: $yellow;
+  background: $purple;
   border: 0;
 }
 
 .card-body {
-  padding: 10px;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 .card-title {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-family: BM-HANNA;
-  color: black;
+  // color: black;
+  color: $yellow;
 }
 
 .card-text {
-  font-size: 0.9rem;
-  color: black;
+  font-size: 1rem;
+  // color: black;
+  color: $yellow;
   font-family: nunito;
 }
