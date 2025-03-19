@@ -16,8 +16,24 @@ class EventsController < ApplicationController
     end
 
     if params[:address].present?
-      @events = @events.joins(:venue).where("users.address ILIKE ?", "%#{params[:address]}%")
+      location = Geocoder.search(params[:address]).first
+
+      if location.present?
+        latitude = location.latitude
+        longitude = location.longitude
+
+        venue_ids = User.venue
+                       .with_coordinates
+                       .near([latitude, longitude], 2, units: :km)
+                       .order(Arel.sql("earth_distance(ll_to_earth(users.latitude, users.longitude), ll_to_earth(#{latitude}, #{longitude})) ASC"))
+                       .pluck(:id)
+
+        @events = @events.where(venue_id: venue_ids)
+      else
+        flash[:alert] = "Could not find the address. Please enter a valid address."
+      end
     end
+
 
     if params[:date].present?
       begin
