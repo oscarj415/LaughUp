@@ -7,7 +7,8 @@ import gsap from "gsap";
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    displaySearch: Boolean
   }
   connect() {
     console.log("connected");
@@ -20,8 +21,11 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    if (this.displaySearchValue) {
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }),'top-left')
+    }
+      this.isExpanded = false;
   }
 
   #fitMapToMarkers() {
@@ -57,17 +61,19 @@ export default class extends Controller {
   resize() {
     const mapElement = document.querySelector(".map");
 
-    gsap.to(mapElement, {
-      height: this.isExpanded ? "150px" : "500px",
-      duration: 0.5,
-      ease: "power2.inOut",
-      onComplete: () => {
-        setTimeout(() => {
-          this.map.resize();
-        }, 100);
-      },
-    });
+    if (!this.isExpanded) {
+      gsap.to(mapElement, {
+        height: this.isExpanded ? "150px" : "500px",
+        duration: 0.5,
+        ease: "power2.inOut",
+        onComplete: () => {
+          setTimeout(() => {
+            this.map.resize();
+          }, 100);
+        },
+      });
 
-    this.isExpanded = !this.isExpanded;
+      this.isExpanded = true;
+    }
   }
 }
