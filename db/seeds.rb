@@ -185,7 +185,7 @@ if comedian1
       comedian_id: comedian1.id,
       venue_id: User.where(user_type: :venue).sample.id,
       title: "The Ha-Ha Hour",
-			description: "Sixty minutes of pure, unfiltered comedy gold!",
+      description: "Sixty minutes of pure, unfiltered comedy gold!",
       date_time: DateTime.new(2025, 3, 21, 20, 0, 0)  # Event will be created randomly within the next 10 days
     )
   puts "Created an event for comedian #{comedian1.user_name}."
@@ -693,5 +693,27 @@ reviews_content = [
 end
 
 puts "✅ Successfully seeded 20 venue reviews!"
+
+puts "Seeding interests..."
+
+# Fetch all events and users
+events = Event.all
+users = User.all
+
+# Ensure users exist
+if users.empty? || events.empty?
+  puts "No users or events found! Please seed users and events first."
+  exit
+end
+
+# Assign random users to be interested in each event
+events.each do |event|
+  interested_users = users.sample(rand(10..30)) # Randomly assign 10-30 users per event
+  interested_users.each do |user|
+    Interest.create!(event_id: event.id, user_id: user.id)
+  end
+end
+
+puts "✅ Interests seeded successfully!"
 
 puts "Seeding completed!"
