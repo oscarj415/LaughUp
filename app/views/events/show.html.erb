@@ -39,9 +39,22 @@
 
 
 <ul class="show-links">
-<li><strong><%= link_to "➶ #{@event.comedian.user_name}´s Profile", user_path(@comedian, previous_event_id: @event.id), class: "show-link" %></strong>
+
+<li>
+  <strong>
+    <%= link_to user_path(@comedian, previous_event_id: @event.id), class: "show-link" do %>
+      <i class="fa-solid fa-user"></i> <%= "#{@event.comedian.user_name}´s Profile" %>
+    <% end %>
+  </strong>
 </li>
-<li><strong><%= link_to "➶ Visit #{@event.venue.user_name}´s Profile", user_path(@venue, previous_event_id: @event.id), class: "show-link" %></strong>
+
+
+
+<li>
+<strong><%= link_to user_path(@venue, previous_event_id: @event.id), class: "show-link" do %>
+<i class="fa-solid fa-martini-glass"></i> <%= "#{@event.venue.user_name}´s Profile" %>
+<% end %>
+</strong>
 </li>
 </ul>
 
