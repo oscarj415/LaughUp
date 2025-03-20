@@ -1,16 +1,21 @@
 <body style="overflow: hidden; height: 100vh;">
 <div class="gallery-home">
 
-<video autoplay loop muted playsinline preload="auto">
+<video loop muted playsinline preload="auto" id="myVideo">
   <source src="https://res.cloudinary.com/dvi6krnyh/video/upload/v1741959647/smiley_r74usi.webm" type="video/webm">
   <source src="https://res.cloudinary.com/dvi6krnyh/video/upload/v1742466667/smiley_hz9gio.mp4" type="video/mp4">
 </video>
-<script>
-const video = document.querySelector('video');
-video.addEventListener('loadeddata', () => {
-  video.play();
-});
-</script>
+  <script>
+    // Function to play the video after a delay
+    function playVideo() {
+      const video = document.getElementById('myVideo');
+      video.style.display = 'block';  // Make video visible
+      video.play();  // Play the video
+    }
+
+    // Delay of 5 seconds (5000 ms)
+    setTimeout(playVideo, 5000);  // This will play the video after 5 seconds
+  </script>
 
 <div class="enter">
 <strong><%= link_to "ENTER", events_path, class: "link" %></strong>
