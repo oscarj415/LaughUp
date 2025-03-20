@@ -8,15 +8,15 @@
 </video>
 </div>
   <script>
-    // Function to play the video after a delay
-    function playVideo() {
-      const video = document.getElementById('myVideo');
-      video.style.display = 'block';  // Make video visible
-      video.play();  // Play the video
-    }
-
-    // Delay of 5 seconds (5000 ms)
-    setTimeout(playVideo, 100);  // This will play the video after 5 seconds
+    document.addEventListener("DOMContentLoaded", function () {
+  const video = document.querySelector("video");
+  if (video) {
+    video.play().catch(error => {
+      console.log("Autoplay failed:", error);
+      video.controls = true; // Show controls as a fallback
+    });
+  }
+});
   </script>
 
 <div class="enter">
