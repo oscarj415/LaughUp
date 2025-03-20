@@ -59,6 +59,21 @@
                 <input type="date" id="filter2" name="date" placeholder="Date">
                 <button type="submit" name="submit2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
+            <style>
+              input[type="date"]:before {
+              content: attr(placeholder);
+              color: gray;
+              position: absolute;
+              margin-left: 10px;
+              pointer-events: none;
+              font-size: 16px;
+            }
+
+            input[type="date"]:focus:before,
+            input[type="date"]:valid:before {
+                content: "";
+              }
+            </style>
 
             <div class="filter-field">
                 <label for="filter3"></label>

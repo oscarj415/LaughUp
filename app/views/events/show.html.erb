@@ -3,8 +3,8 @@
 <div class="event-info">
   <h1 class="event-title"><%= @event.title %></h1>
     <div style="display: flex; align-items: center; justify-content: center;">
-  <%= cl_image_tag @comedian.photo.key, style: "width: 200px; height: 200px; object-fit: cover; margin: 0; padding: 0; border-top-left-radius: 15px; border-bottom-left-radius: 15px;" if @comedian.photo.attached? %>
-  <%= cl_image_tag @venue.photo.key, style: "width: 200px; height: 200px; object-fit: cover; margin: 0; padding: 0; border-top-right-radius: 15px; border-bottom-right-radius: 15px;" if @venue.photo.attached? %>
+  <%= cl_image_tag @comedian.photo.key, style: "width: 180px; height: 180px; object-fit: cover; margin: 0; padding: 0; border-top-left-radius: 15px; border-bottom-left-radius: 15px;" if @comedian.photo.attached? %>
+  <%= cl_image_tag @venue.photo.key, style: "width: 180px; height: 180px; object-fit: cover; margin: 0; padding: 0; border-top-right-radius: 15px; border-bottom-right-radius: 15px;" if @venue.photo.attached? %>
 </div>
   <br>
 
