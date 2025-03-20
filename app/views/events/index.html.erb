@@ -18,7 +18,7 @@
         <%= event.title %> with
         <%= event.comedian.user_name %>
         </h4>
-        
+
         <span class="when"> 📆
         <%= event.date_time.strftime("%A, %d.%m") %>
         <%= event.date_time.strftime("%H.%M UHR") %>
@@ -55,8 +55,10 @@
             </div>
 
             <div class="filter-field">
-                <label for="filter2"></label>
-                <input type="date" id="filter2" name="date" placeholder="Date">
+              <div class="date-container">
+                  <input type="date" id="filter2" name="date" value="<%= params[:date] || '' %>">
+                  <label for="filter2" class="date-placeholder">Select a date</label>
+                </div>
                 <button type="submit" name="submit2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 

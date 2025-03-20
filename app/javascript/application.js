@@ -138,3 +138,19 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAnimations();
   setupNavbar();
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById("filter2");
+  const dateLabel = document.querySelector(".date-placeholder");
+  dateInput.addEventListener("change", function() {
+    if (dateInput.value) {
+      dateLabel.style.display = "none";
+    } else {
+      dateLabel.style.display = "block";
+    }
+  });
+  if (dateInput.value) {
+    dateLabel.style.display = "none";
+  }
+});

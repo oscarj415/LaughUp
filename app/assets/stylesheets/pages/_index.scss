@@ -1,2 +1,20 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.date-container {
+  position: relative;
+}
+.date-placeholder {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+input[type="date"]:not(:placeholder-shown) + .date-placeholder,
+input[type="date"]:focus + .date-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
