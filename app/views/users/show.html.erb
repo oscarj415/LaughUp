@@ -35,12 +35,12 @@
   </div>
   </p>
 
-<h3>Past Events</h3>
+<h3>Other events with <%= @user.user_name %></h3>
 
 <ul class="event-list">
   <% @user.events_as_comedian.each do |event| %>
     <li>
-      ☞ <%= link_to event.title, event_path(event), class: "event-link" %>
+      <%= link_to event.title, event_path(event), class: "event-link" %>
     </li>
   <% end %>
 </ul>
@@ -115,12 +115,13 @@
   </p>
 
 
+<h3 class="past">Other events at <%= @user.user_name %></h3>
 
-  <h3 class="past"> Past events </h3>
+
   <ul class="event-list">
   <% @user.events_as_venue.each do |event| %>
     <li>
-      ☞ <%= link_to event.title, event_path(event), class: "event-link" %>
+      <%= link_to event.title, event_path(event), class: "event-link" %>
     </li>
   <% end %>
 </ul>
