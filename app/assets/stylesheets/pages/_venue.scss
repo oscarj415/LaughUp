@@ -80,6 +80,21 @@
 .card-body {
   padding: 10px 20px;
   border-radius: 10px;
+  color: $yellow;
+  font-size: 1.3rem;
+
+  .comment, .event {
+    font-family: nunito;
+    font-size: 1rem;
+  }
+
+  .event-a {
+    color: $yellow;
+    text-decoration: none;
+    font-family: BM-HANNA;
+    font-size: 1.3rem;
+  }
+
 }
 
 .card-title {

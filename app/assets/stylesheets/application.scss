@@ -32,7 +32,6 @@ html, body {
   letter-spacing: 10%;
   background-color: $yellow;
   font-family: 'BM-HANNA';
-
 }
 
 .filter-btn {
@@ -126,6 +125,12 @@ h2 {
 .filter-field input::placeholder {
   color: lightgrey;
 }
+
+input::placeholder {
+  color: $yellow !important;
+  opacity: 1;
+}
+
 
 input {
   width: 230px;
@@ -222,6 +227,18 @@ button {
   font-size: 2rem;
   font-family: 'BM-HANNA', sans-serif;
 }
+// +++++++++++++++++++++++++++++++++++++
+// .items {
+//   display: flex;
+//   width: 90vw;
+//   max-width: 500px;
+//   height: 250px;
+//   outline: 4px solid $purple;
+//   border-radius: 10px;
+//   align-items: stretch;
+//   overflow: hidden;
+// }
+
 
 .items {
   display: flex;
@@ -230,10 +247,12 @@ button {
   height: 250px;
   outline: 4px solid $purple;
   border-radius: 10px;
-  align-items: stretch;
-  overflow: hidden;
+  align-items: center; // Center contents inside
+  justify-content: center; // Distribute content properly
+  overflow: hidden; // Prevents anything from spilling out
 }
 
+// ++++++++++++++++++++++++++++++++++++++++
 .img-a {
   display: block;
   text-decoration: none;
@@ -255,6 +274,15 @@ button {
   }
 }
 
+// ________________________________________
+
+// .info-text {
+//   flex: 1.8;
+//   padding: 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
 
 .info-text {
   flex: 1.8;
@@ -262,8 +290,15 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  word-wrap: break-word; // Ensures long words break properly
+  overflow-wrap: break-word;
+  max-width: 100%; // Keeps everything within the box
 }
 
+
+// ______________________________________________
 .event-name {
   text-align: center;
   font-family: BM-HANNA;
