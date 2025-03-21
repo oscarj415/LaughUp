@@ -1,9 +1,12 @@
+Final seed
+
 require "open-uri"
 
 puts "Seeding data..."
 
 Event.destroy_all
 User.destroy_all
+Review.destroy_all
 # -------------------
 # Fans
 # -------------------
@@ -22,20 +25,34 @@ puts "Created 5 fan users."
 # Comedians
 # -------------------
 comedian_data = [
-  { name: "Kat", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293091/WhatsApp_Image_2025-03-18_at_10.56.29_7_ehtjlp.jpg", description: "A British comedian who’ll have you laughing at things you never thought were funny. Her love for orange is the only thing brighter than her punchlines!" },
-  { name: "Soojin", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293099/WhatsApp_Image_2025-03-18_at_10.56.29_5_be9qhi.jpg", description: "When Soojin isn’t making jokes about football, she’s making jokes about everything else. Tottenham might not win trophies, but she’ll definitely win you over with her wit!" },
-  { name: "Olivier", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293100/WhatsApp_Image_2025-03-18_at_10.56.29_rzetkq.jpg", description: "French and funny, Olivier’s comedy is as sharp as his sound effects. Whether he’s telling jokes or composing music, he’s always in tune with laughter!" },
-  { name: "Lucas", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293105/WhatsApp_Image_2025-03-18_at_10.56.30_jtrkni.jpg", description: "Lucas is the guy with a dog, a great sense of humor, and the best ‘dad jokes’ you’ll hear. His French-German mix makes him as multi-layered as his punchlines!" },
-  { name: "Sonia", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293091/WhatsApp_Image_2025-03-18_at_10.56.29_6_ntt6ph.jpg", description: "Sonia’s comedy is like her acting career—dramatic, hilarious, and full of surprises. She’s a master at turning everyday moments into epic laugh-out-loud stories!" },
-  { name: "Massih", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293095/WhatsApp_Image_2025-03-18_at_10.56.29_4_mv2ikd.jpg", description: "When Massih isn’t practicing yoga, he’s bending the rules of comedy. His Persian-German combo is as intriguing as his obscure hobbies and hilarious takes on them!" },
-  { name: "Nakul", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293105/WhatsApp_Image_2025-03-18_at_10.56.30_1_xmmut2.jpg", description: "Nakul is the sweetest family man you’ll ever meet—until he cracks a joke. His humor will make you laugh harder than his daily phone calls to his wife!" },
-  { name: "Ahlam", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293094/WhatsApp_Image_2025-03-18_at_10.56.29_2_qj18pz.jpg", description: "Ahlam’s fashion is as posh as her punchlines—sharp, stylish, and unexpected. She’s got a way of making the most fashionable moments hilariously relatable!" },
-  { name: "Otto", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293093/WhatsApp_Image_2025-03-18_at_10.56.29_3_kw3hrz.jpg", description: "Otto’s German precision doesn’t just apply to tech—it’s in his comedy too. His AI-powered humor is so on point, even his punchlines come with an algorithm!" },
-  { name: "Oscar", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742305707/screenshot_20250226-165046_gallery_l2xja8.jpg", description: "Oscar’s obsession with soccer might just be matched by his love for a good joke. Whether playing or watching, he’ll make you laugh harder than a last-minute goal!" },
-  { name: "Tamari", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293110/WhatsApp_Image_2025-03-18_at_10.56.55_fkljex.jpg", description: "Tamari’s comedy is as sweet as her late-night baked goods. She’s the only comedian who can make you laugh while making you hungry for a midnight snack!" },
-  { name: "Yuta", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293107/WhatsApp_Image_2025-03-18_at_10.56.47_ofnrvo.jpg", description: "Yuta’s comedy will have you dancing with laughter. Between his passion for dance and his dog Lexi, you’re guaranteed a performance you’ll never forget!" },
-  { name: "Daruisz", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293105/WhatsApp_Image_2025-03-18_at_10.57.07_zr8xqr.jpg", description: "In Spandau, Daruisz is the ruler of both the village and the comedy scene. His unique brand of humor will make you feel like royalty—minus the crown!" },
-  { name: "Claire", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742293100/WhatsApp_Image_2025-03-18_at_10.56.29_1_wvffaz.jpg", description: "Claire’s comedy is so intuitive, she can tell when Oscar needs a ticket before he asks. Her telepathic humor will leave you wondering if she’s reading your mind!" }
+  { name: "Kat Nip", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223745/WhatsApp_Image_2025-03-17_at_15.58.57_4_s3htwo.jpg", description: "A British comedian who’ll have you laughing at things you never thought were funny. Her love for orange is the only thing brighter than her punchlines!" },
+
+  { name: "Heung-min Soojin", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223750/WhatsApp_Image_2025-03-17_at_15.58.57_jisbn9.jpg", description: "When Heung-min Soojin isn’t making jokes about football, she’s making jokes about everything else. Tottenham might not win trophies, but she’ll definitely win you over with her wit!" },
+
+  { name: "Olivier Twist", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742224213/WhatsApp_Image_2025-03-17_at_16.09.09_1_s4ilqs.jpg", description: "French and funny, Olivier Twist’s comedy is as sharp as his sound effects. Whether he’s telling jokes or composing music, he’s always in tune with laughter!" },
+
+  { name: "Lukey Lu", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742224213/WhatsApp_Image_2025-03-17_at_16.09.09_gq2bh3.jpg", description: "Lukey Lu is the guy with a dog, a great sense of humor, and the best ‘dad jokes’ you’ll hear. His French-German mix makes him as multi-layered as his punchlines!" },
+
+  { name: "Sunny", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223750/WhatsApp_Image_2025-03-17_at_15.58.57_1_hpgy9l.jpg", description: "Sunny’s comedy is like her acting career—dramatic, hilarious, and full of surprises. She’s a master at turning everyday moments into epic laugh-out-loud stories!" },
+
+  { name: "Massimoo", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223745/WhatsApp_Image_2025-03-17_at_15.58.57_5_rmsnvw.jpg", description: "When Massimoo isn’t practicing yoga, he’s bending the rules of comedy. His Persian-German combo is as intriguing as his obscure hobbies and hilarious takes on them!" },
+
+  { name: "Nacool", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223741/WhatsApp_Image_2025-03-17_at_15.58.57_12_shyzsk.jpg", description: "Nacool is the sweetest family man you’ll ever meet—until he cracks a joke. His humor will make you laugh harder than his daily phone calls to his wife!" },
+
+  { name: "Lam Lam", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223746/WhatsApp_Image_2025-03-17_at_15.58.57_2_wv9yc8.jpg", description: "Lam Lam’s fashion is as posh as her punchlines—sharp, stylish, and unexpected. She’s got a way of making the most fashionable moments hilariously relatable!" },
+
+  { name: "Otto Ai", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223745/WhatsApp_Image_2025-03-17_at_15.58.57_6_hwwd66.jpg", description: "Otto Ai’s German precision doesn’t just apply to tech—it’s in his comedy too. His AI-powered humor is so on point, even his punchlines come with an algorithm!" },
+
+  { name: "Oscar Boboscar", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223741/WhatsApp_Image_2025-03-17_at_15.58.57_13_rdqkyb.jpg", description: "Oscar Boboscar’s obsession with soccer might just be matched by his love for a good joke. Whether playing or watching, he’ll make you laugh harder than a last-minute goal!" },
+
+  { name: "TMoney", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223741/WhatsApp_Image_2025-03-17_at_15.58.57_8_tpuqbw.jpg", description: "TMoney’s comedy is as sweet as her late-night baked goods. She’s the only comedian who can make you laugh while making you hungry for a midnight snack!" },
+
+  { name: "YuYu", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223741/WhatsApp_Image_2025-03-17_at_15.58.57_9_sv1vne.jpg", description: "YuYu’s comedy will have you dancing with laughter. Between his passion for dance and his dog Lexi, you’re guaranteed a performance you’ll never forget!" },
+
+  { name: "D2drippy", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223741/WhatsApp_Image_2025-03-17_at_15.58.57_10_hscfvi.jpg", description: "In Spandau, D2drippy is the ruler of both the village and the comedy scene. His unique brand of humor will make you feel like royalty—minus the crown!" },
+
+  { name: "Eclair", image_url: "https://res.cloudinary.com/dri955bfe/image/upload/v1742223746/WhatsApp_Image_2025-03-17_at_15.58.57_3_rvxfnn.jpg", description: "Eclair’s comedy is so intuitive, she can tell when Oscar needs a ticket before he asks. Her telepathic humor will leave you wondering if she’s reading your mind!" }
+
 ]
 
 comedian_data.each_with_index do |data, i|
@@ -102,12 +119,12 @@ puts "Created #{venue_data.size} venue users."
 # end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian = User.find_by(user_name: "Kat", user_type: :comedian)
+comedian = User.find_by(user_name: "Kat Nip", user_type: :comedian)
 if comedian
   # Randomly select a venue for the event
   # venue = User.where(user_type: :venue).sample
 
-  # Create an event for the comedian "Kat" with a random venue
+  # Create an event for the comedian "Kat Nip" with a random venue
     Event.create!(
       comedian_id: comedian.id,
       venue_id: User.where(user_type: :venue).sample.id,
@@ -117,7 +134,7 @@ if comedian
     )
   puts "Created an event for comedian #{comedian.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Kat Nip not found."
 end
 if comedian
 # New Comedian
@@ -130,7 +147,7 @@ if comedian
     )
   puts "Created an event for comedian #{comedian.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Kat Nip not found."
 end
 if comedian
   # New Comedian
@@ -143,7 +160,7 @@ if comedian
       )
     puts "Created an event for comedian #{comedian.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Kat Nip not found."
   end
 
 if comedian
@@ -157,7 +174,7 @@ if comedian
         )
       puts "Created an event for comedian #{comedian.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Kat Nip not found."
   end
 
   if comedian
@@ -171,16 +188,16 @@ if comedian
         )
       puts "Created an event for comedian #{comedian.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Kat Nip not found."
   end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian1 = User.find_by(user_name: "Soojin", user_type: :comedian)
+comedian1 = User.find_by(user_name: "Heung-min Soojin", user_type: :comedian)
 if comedian1
   # Randomly select a venue for the event
   # venue = User.where(user_type: :venue).sample
 
-  # Create an event for the comedian "Soojin" with a random venue
+  # Create an event for the comedian "Heung-min Soojin" with a random venue
     Event.create!(
       comedian_id: comedian1.id,
       venue_id: User.where(user_type: :venue).sample.id,
@@ -190,7 +207,7 @@ if comedian1
     )
   puts "Created an event for comedian #{comedian1.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Heung-min Soojin not found."
 end
 if comedian1
 # New Comedian
@@ -203,7 +220,7 @@ if comedian1
     )
   puts "Created an event for comedian #{comedian1.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Heung-min Soojin not found."
 end
 if comedian1
   # New Comedian
@@ -216,7 +233,7 @@ if comedian1
       )
     puts "Created an event for comedian #{comedian1.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Heung-min Soojin not found."
   end
 
 if comedian1
@@ -230,7 +247,7 @@ if comedian1
         )
       puts "Created an event for comedian #{comedian1.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Heung-min Soojin not found."
   end
 
   if comedian1
@@ -244,16 +261,16 @@ if comedian1
         )
       puts "Created an event for comedian #{comedian1.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Heung-min Soojin not found."
   end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian2 = User.find_by(user_name: "Olivier", user_type: :comedian)
+comedian2 = User.find_by(user_name: "Olivier Twist", user_type: :comedian)
 if comedian2
   # Randomly select a venue for the event
   # venue = User.where(user_type: :venue).sample
 
-  # Create an event for the comedian "Olivier" with a random venue
+  # Create an event for the comedian "Olivier Twist" with a random venue
     Event.create!(
       comedian_id: comedian2.id,
       venue_id: User.where(user_type: :venue).sample.id,
@@ -263,7 +280,7 @@ if comedian2
     )
   puts "Created an event for comedian #{comedian2.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Olivier Twist not found."
 end
 if comedian2
 # New Comedian
@@ -276,7 +293,7 @@ if comedian2
     )
   puts "Created an event for comedian #{comedian2.user_name}."
 else
-  puts "Comedian Kat not found."
+  puts "Comedian Olivier Twist not found."
 end
 if comedian2
   # New Comedian
@@ -289,57 +306,14 @@ if comedian2
       )
     puts "Created an event for comedian #{comedian2.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Olivier Twist not found."
   end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian3 = User.find_by(user_name: "Olivier", user_type: :comedian)
-  if comedian3
-
-    # Create an event for the comedian "Olivier" with a random venue
-      Event.create!(
-        comedian_id: comedian3.id,
-        venue_id: User.where(user_type: :venue).sample.id,
-        title: "Punchlines & Pints",
-        description: "Enjoy top-tier comedy with a drink in hand at this laugh-out-loud show!",
-        date_time: DateTime.new(2025, 3, 22, 20, 0, 0)  # Event will be created randomly within the next 10 days
-      )
-    puts "Created an event for comedian #{comedian3.user_name}."
-  else
-    puts "Comedian Kat not found."
-  end
-  if comedian3
-  # New Comedian
-      Event.create!(
-        comedian_id: comedian3.id,
-        venue_id: User.where(user_type: :venue).sample.id,
-        title: "The Late Night Laughs Club",
-        description: "A comedy showcase that keeps the jokes rolling well into the night!",
-        date_time: DateTime.new(2025, 3, 21, 18, 0, 0)  # Event will be created randomly within the next 10 days
-      )
-    puts "Created an event for comedian #{comedian3.user_name}."
-  else
-    puts "Comedian Kat not found."
-  end
-  if comedian3
-    # New Comedian
-        Event.create!(
-          comedian_id: comedian3.id,
-          venue_id: User.where(user_type: :venue).sample.id,
-          title: "Grin & Bear It",
-          description: "A comedy night full of relatable humor about life's everyday struggles!",
-          date_time: DateTime.new(2025, 3, 20, 18, 0, 0)  # Event will be created randomly within the next 10 days
-        )
-      puts "Created an event for comedian #{comedian3.user_name}."
-    else
-      puts "Comedian Kat not found."
-    end
-
-# THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian4 = User.find_by(user_name: "Lucas", user_type: :comedian)
+comedian4 = User.find_by(user_name: "Lukey Lu", user_type: :comedian)
   if comedian4
 
-    # Create an event for the comedian "Lucas" with a random venue
+    # Create an event for the comedian "Lukey Lu" with a random venue
       Event.create!(
         comedian_id: comedian4.id,
         venue_id: User.where(user_type: :venue).sample.id,
@@ -349,7 +323,7 @@ comedian4 = User.find_by(user_name: "Lucas", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian4.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Lukey Lu not found."
   end
   if comedian4
   # New Comedian
@@ -362,7 +336,7 @@ comedian4 = User.find_by(user_name: "Lucas", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian4.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Lukey Lu not found."
   end
   if comedian4
     # New Comedian
@@ -375,14 +349,14 @@ comedian4 = User.find_by(user_name: "Lucas", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian4.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Lukey Lu not found."
     end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian5 = User.find_by(user_name: "Sonia", user_type: :comedian)
+comedian5 = User.find_by(user_name: "Sunny", user_type: :comedian)
   if comedian5
 
-    # Create an event for the comedian "Sonia" with a random venue
+    # Create an event for the comedian "Sunny" with a random venue
       Event.create!(
         comedian_id: comedian5.id,
         venue_id: User.where(user_type: :venue).sample.id,
@@ -392,7 +366,7 @@ comedian5 = User.find_by(user_name: "Sonia", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian5.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Sunny not found."
   end
   if comedian5
   # New Comedian
@@ -405,7 +379,7 @@ comedian5 = User.find_by(user_name: "Sonia", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian5.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Sunny not found."
   end
   if comedian5
     # New Comedian
@@ -418,14 +392,14 @@ comedian5 = User.find_by(user_name: "Sonia", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian5.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Sunny not found."
     end
 
 # THIS IS THE BEGIN OF THE EVENT CREATION FOR A COMEDIAN!!!
-comedian6 = User.find_by(user_name: "Oscar", user_type: :comedian)
+comedian6 = User.find_by(user_name: "Oscar Boboscar", user_type: :comedian)
   if comedian6
 
-    # Create an event for the comedian "Oscar" with a random venue
+    # Create an event for the comedian "Oscar Boboscar" with a random venue
       Event.create!(
         comedian_id: comedian6.id,
         venue_id: User.where(user_type: :venue).sample.id,
@@ -435,7 +409,7 @@ comedian6 = User.find_by(user_name: "Oscar", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian6.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Oscar Boboscar not found."
   end
   if comedian6
   # New Comedian
@@ -448,7 +422,7 @@ comedian6 = User.find_by(user_name: "Oscar", user_type: :comedian)
       )
     puts "Created an event for comedian #{comedian6.user_name}."
   else
-    puts "Comedian Kat not found."
+    puts "Comedian Oscar Boboscar not found."
   end
   if comedian6
     # New Comedian
@@ -461,16 +435,16 @@ comedian6 = User.find_by(user_name: "Oscar", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian6.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Oscar Boboscar not found."
     end
 
 
 
 
-comedian7 = User.find_by(user_name: "Massih", user_type: :comedian)
+comedian7 = User.find_by(user_name: "Massimoo", user_type: :comedian)
     if comedian7
 
-      # Create an event for the comedian "Massih" with a random venue
+      # Create an event for the comedian "Massimoo" with a random venue
         Event.create!(
           comedian_id: comedian7.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -480,13 +454,13 @@ comedian7 = User.find_by(user_name: "Massih", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian7.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Massimoo not found."
 end
 
-comedian8 = User.find_by(user_name: "Nakul", user_type: :comedian)
+comedian8 = User.find_by(user_name: "Nacool", user_type: :comedian)
     if comedian8
 
-      # Create an event for the comedian "Nakul" with a random venue
+      # Create an event for the comedian "Nacool" with a random venue
         Event.create!(
           comedian_id: comedian8.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -496,13 +470,13 @@ comedian8 = User.find_by(user_name: "Nakul", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian8.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Nacool not found."
 end
 
-comedian9 = User.find_by(user_name: "Ahlam", user_type: :comedian)
+comedian9 = User.find_by(user_name: "Lam Lam", user_type: :comedian)
     if comedian9
 
-      # Create an event for the comedian "Ahlam" with a random venue
+      # Create an event for the comedian "Lam Lam" with a random venue
         Event.create!(
           comedian_id: comedian9.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -512,13 +486,13 @@ comedian9 = User.find_by(user_name: "Ahlam", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian9.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Lam Lam not found."
 end
 
-comedian10 = User.find_by(user_name: "Otto", user_type: :comedian)
+comedian10 = User.find_by(user_name: "Otto Ai", user_type: :comedian)
     if comedian10
 
-      # Create an event for the comedian "Otto" with a random venue
+      # Create an event for the comedian "Otto Ai" with a random venue
         Event.create!(
           comedian_id: comedian10.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -528,13 +502,13 @@ comedian10 = User.find_by(user_name: "Otto", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian10.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Otto Ai not found."
 end
 
-comedian11 = User.find_by(user_name: "Tamari", user_type: :comedian)
+comedian11 = User.find_by(user_name: "TMoney", user_type: :comedian)
     if comedian11
 
-      # Create an event for the comedian "Tamari" with a random venue
+      # Create an event for the comedian "TMoney" with a random venue
         Event.create!(
           comedian_id: comedian11.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -544,13 +518,13 @@ comedian11 = User.find_by(user_name: "Tamari", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian11.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian TMoney not found."
 end
 
-comedian12 = User.find_by(user_name: "Yuta", user_type: :comedian)
+comedian12 = User.find_by(user_name: "YuYu", user_type: :comedian)
     if comedian12
 
-      # Create an event for the comedian "Yuta" with a random venue
+      # Create an event for the comedian "YuYu" with a random venue
         Event.create!(
           comedian_id: comedian12.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -560,13 +534,13 @@ comedian12 = User.find_by(user_name: "Yuta", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian12.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian YuYu not found."
 end
 
-comedian13 = User.find_by(user_name: "Daruisz", user_type: :comedian)
+comedian13 = User.find_by(user_name: "D2drippy", user_type: :comedian)
     if comedian13
 
-      # Create an event for the comedian "Daruisz" with a random venue
+      # Create an event for the comedian "D2drippy" with a random venue
         Event.create!(
           comedian_id: comedian13.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -576,13 +550,13 @@ comedian13 = User.find_by(user_name: "Daruisz", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian13.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian D2drippy not found."
 end
 
-comedian14 = User.find_by(user_name: "Claire", user_type: :comedian)
+comedian14 = User.find_by(user_name: "Eclair", user_type: :comedian)
     if comedian14
 
-      # Create an event for the comedian "Claire" with a random venue
+      # Create an event for the comedian "Eclair" with a random venue
         Event.create!(
           comedian_id: comedian14.id,
           venue_id: User.where(user_type: :venue).sample.id,
@@ -592,7 +566,7 @@ comedian14 = User.find_by(user_name: "Claire", user_type: :comedian)
         )
       puts "Created an event for comedian #{comedian14.user_name}."
     else
-      puts "Comedian Kat not found."
+      puts "Comedian Eclair not found."
 end
 
 
@@ -715,5 +689,6 @@ events.each do |event|
 end
 
 puts "✅ Interests seeded successfully!"
+
 
 puts "Seeding completed!"
