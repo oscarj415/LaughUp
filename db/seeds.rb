@@ -1,4 +1,3 @@
-Final seed
 
 require "open-uri"
 
