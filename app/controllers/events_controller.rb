@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @events = Event.where("date_time >= ?", Date.today + 1).order(date_time: :asc)
+    @events = Event.where("date_time >= ?", Date.today).order(date_time: :asc)
     @past_events = Event.where("date_time < ?", Date.today).order(date_time: :asc)
     @venues = User.venue
 
