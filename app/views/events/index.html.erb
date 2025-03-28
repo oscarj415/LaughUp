@@ -1,9 +1,10 @@
 <div class="gallery-index">
   <div class="head-text">
-<h1 class="all-events-title">Upcoming Events:</h1>
+<h1 class="all-events-title">Events:</h1>
 </div>
 
-<% @events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
+<%# <% @past_events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
+<% @past_events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
 
 <div><%= date %></div>
 <% events.each do |event| %>
