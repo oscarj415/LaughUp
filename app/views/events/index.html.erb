@@ -1,9 +1,10 @@
 <div class="gallery-index">
   <div class="head-text">
-<h1 class="all-events-title">Upcoming Events:</h1>
+<h1 class="all-events-title">Events:</h1>
 </div>
 
-<% @events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
+<%# <% @past_events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
+<% @past_events.group_by { |n| n.date_time.strftime("%d %B %Y")}.each do |date, events| %>
 
 <div><%= date %></div>
 <% events.each do |event| %>
@@ -18,7 +19,7 @@
         <%= event.title %> with
         <%= event.comedian.user_name %>
         </h4>
-        
+
         <span class="when"> 📆
         <%= event.date_time.strftime("%A, %d.%m") %>
         <%= event.date_time.strftime("%H.%M UHR") %>
@@ -59,6 +60,21 @@
                 <input type="date" id="filter2" name="date" placeholder="Date">
                 <button type="submit" name="submit2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
+            <style>
+              input[type="date"]:before {
+              content: attr(placeholder);
+              color: gray;
+              position: absolute;
+              margin-left: 10px;
+              pointer-events: none;
+              font-size: 16px;
+            }
+
+            input[type="date"]:focus:before,
+            input[type="date"]:valid:before {
+                content: "";
+              }
+            </style>
 
             <div class="filter-field">
                 <label for="filter3"></label>

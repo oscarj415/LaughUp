@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+#myVideo {
+  background-color: yellow;
+}
+
+video {
+  display: block !important;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: cover;
+  background: transparent !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
